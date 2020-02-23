@@ -10,13 +10,19 @@ import { RegisterComponent } from './auth/register/register.component';
 import { AppRoutingModule } from './app.routing';
 import { ServicesModule } from './services/services.module';
 import { GetToursComponent } from './tours/get-tours/get-tours.component';
+import { PostToursComponent } from './tours/post-tours/post-tours.component';
+import { HeaderComponent } from './tours/header/header.component';
+import { FooterComponent } from './tours/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    GetToursComponent
+    GetToursComponent,
+    PostToursComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserAnimationsModule,
