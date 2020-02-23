@@ -23,10 +23,8 @@ export class PostToursComponent implements OnInit {
     this.submitting = true
     this.toursService.postTour(this.tour)
     .subscribe(result => {
-      console.log(result)
       this.submitting = false
       this.notfiy.showSuccess('tour created')
-    debugger
     }, err => {
       this.submitting = false
       console.log(err)

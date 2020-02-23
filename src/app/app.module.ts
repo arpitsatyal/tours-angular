@@ -13,6 +13,7 @@ import { GetToursComponent } from './tours/get-tours/get-tours.component';
 import { PostToursComponent } from './tours/post-tours/post-tours.component';
 import { HeaderComponent } from './tours/header/header.component';
 import { FooterComponent } from './tours/footer/footer.component';
+import { WelcomeComponent } from './tours/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FooterComponent } from './tours/footer/footer.component';
     GetToursComponent,
     PostToursComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserAnimationsModule,

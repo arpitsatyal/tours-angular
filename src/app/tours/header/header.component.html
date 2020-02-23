@@ -18,6 +18,7 @@
         <img src="./../../../assets/img/users/default.jpg" alt="User photo" class="nav__user-img" />
         <span *ngIf="isLoggedIn()">{{loggedInUser}}</span>
       </a>
+      <a routerLink="/createTour" class="nav__el nav__el--cta">create a tour</a>
       <button *ngIf="isLoggedIn()" class="nav__el nav__el--cta" (click)="logout()">logout</button> 
     </nav>
   </header>

@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       .subscribe((res: any) => {
         localStorage.setItem('token', res.token)     
         localStorage.setItem('user', JSON.stringify(res.user))  
-        this.router.navigate([''])
+        this.router.navigate(['/getTours'])
       }, err => {
         console.log(err)
         setTimeout(() => this.submitting = false, 3000)
