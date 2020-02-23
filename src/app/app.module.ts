@@ -1,0 +1,32 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import {FormsModule} from '@angular/forms'
+import {HttpClientModule } from '@angular/common/http'
+import {ToastrModule} from 'ngx-toastr'
+
+import { AppComponent } from './app.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { AppRoutingModule } from './app.routing';
+import { ServicesModule } from './services/services.module';
+import { GetToursComponent } from './tours/get-tours/get-tours.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    GetToursComponent
+  ],
+  imports: [
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    FormsModule,
+    ServicesModule,
+    HttpClientModule,
+    ToastrModule.forRoot()
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }

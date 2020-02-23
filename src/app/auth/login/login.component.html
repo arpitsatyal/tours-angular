@@ -1,0 +1,14 @@
+<div *ngIf="!isLoggedIn()">
+    <h2>login</h2>
+
+<form class="form control">
+    <input class="form control"  type="text" name="username" [(ngModel)]="user.username">
+    <br>
+    <input class="form control"  type="password" name="password" [(ngModel)]="user.password">
+    <button class="btn btn-primary" (click) ="login($event)" [hidden]="submitting">login</button>
+    <button class="btn btn-info" [hidden]="!submitting">logging in...</button>
+
+</form>
+
+<a routerLink='/auth/register'>register here</a>
+</div>
