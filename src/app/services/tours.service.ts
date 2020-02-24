@@ -21,6 +21,9 @@ constructor(
     postTour(data: Tour) {
         return this.http.post(this.url, data, this.getOptionsWithToken())
     }
+    updateTour(tourId: string, data: Tour) {
+        return this.http.patch(`${this.url}/${tourId}`, data, this.getOptionsWithToken())
+    }
     deleteTour(tourId: string) {
         return this.http.delete(`${this.url}/${tourId}`,this.getOptionsWithToken())
     }

@@ -1,6 +1,6 @@
-<h2>create tour </h2>
+<h2>edit tour </h2>
 
-<form class="form-group" #tourForm="ngForm">
+<form class="form-group">
     <label for="name">name</label>
     <input class="form-control" type="text" placeholder="name" name="name" [(ngModel)]="tour.name">
 
@@ -11,7 +11,7 @@
     <input class="form-control" type="number" placeholder="price" name="price" [(ngModel)]="tour.price">
 
     <label for="summary">summary</label>
-    <input class="form-control" type="text" placeholder="summary" name="summary" [(ngModel)]="tour.summary" required>
+    <input class="form-control" type="text" placeholder="summary" name="summary" [(ngModel)]="tour.summary">
 
     <label for="difficulty">difficulty</label> <br>
     <input type="radio" name="difficulty" value="easy" [(ngModel)]="tour.difficulty">
@@ -29,8 +29,8 @@
     <!-- <label for="image">Choose Image</label>
     <input class="form-control" type="file" name="image" (change)="fileChanged($event)"> -->
 
-    <button *ngIf="!submitting" [disabled]="tourForm.invalid" class="btn btn-primary" (click)="createTour()">submit</button>
-    <button disabled *ngIf="submitting" class="btn btn-info">submitting...</button>
+    <button  [hidden]="submitting" class="btn btn-primary" (click)="editTour(tour)">submit</button>
+    <button [hidden]="!submitting" class="btn btn-info">submitting...</button>
 </form>
 
 <a routerLink="/getTours">go back</a>

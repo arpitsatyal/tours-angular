@@ -8,11 +8,11 @@ import { Component, OnInit } from '@angular/core';
     <img src="./../../../assets/img/logo-green.png" alt="Natours logo" />
   </div>
   <ul class="footer__nav">
-    <li><a href="#">About us</a></li>
-    <li><a href="#">Download apps</a></li>
-    <li><a href="#">Become a guide</a></li>
-    <li><a href="#">Careers</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a routerLink="#">About us</a></li>
+    <li><a routerLink="#">Download apps</a></li>
+    <li><a routerLink="#">Become a guide</a></li>
+    <li><a routerLink="#">Careers</a></li>
+    <li><a routerLink="#">Contact</a></li>
   </ul>
   <p class="footer__copyright">
     &copy; by Arpit Satyal. All rights reserved.

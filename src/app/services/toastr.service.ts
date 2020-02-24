@@ -9,6 +9,10 @@ export class notifyService {
     showSuccess(msg: string) {
         this.toastrService.success(msg)
     }
+    
+    showInfo(msg: string) {
+        this.toastrService.info(msg)
+    }
     showError(e) {
         debugger
         if (e.error.error) {

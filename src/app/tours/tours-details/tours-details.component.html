@@ -1,29 +1,4 @@
 <app-header></app-header>
-<section class="section-header">
-      <div class="heading-box">
-        <h1 class="heading-primary">
-            <span
-            >{{tourFirstName}} <br />
-            {{tourLastName}} Tour</span
-          >
-        </h1>
-        <div class="heading-box__group">
-          <div class="heading-box__detail">
-            <svg class="heading-box__icon">
-              <use xlink:href="icons.svg#icon-clock"></use>
-            </svg>
-            <span class="heading-box__text">{{tour.duration}} days</span>
-          </div>
-          <div class="heading-box__detail">
-            <svg class="heading-box__icon">
-              <use xlink:href="./../../../assets/img/icons.svg#icon-map-pin"></use>
-            </svg>
-            <span class="heading-box__text">Las Vegas, USA</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="section-description">
       <div class="overview-box">
         <div>
@@ -97,7 +72,7 @@
       </div>
 
       <div class="description-box">
-        <h2 class="heading-secondary ma-bt-lg">About the {{tour.name}}</h2>
+        <h2 class="heading-secondary ma-bt-lg"> {{tour.name}}</h2>
         <p class="description__text">
           {{tour.summary}}
         </p>
@@ -126,8 +101,13 @@
           alt="The Park Camper Tour 1"
         />
       </div>
+      <form *ngIf="user.role === 'admin'">
+        <label for="files">Select files:</label>
+        <input type="file" id="files" name="files" multiple><br><br>
+        <input type="submit">Upload photos
+      </form>
     </section>
-
+  
     <section class="section-reviews">
       <div class="reviews">
         <div class="reviews__card">

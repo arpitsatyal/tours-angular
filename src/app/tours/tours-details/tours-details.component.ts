@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ToursService } from 'src/app/services/tours.service';
 import { ActivatedRoute } from '@angular/router';
 import { notifyService } from 'src/app/services/toastr.service';
@@ -12,6 +12,7 @@ export class ToursDetailsComponent implements OnInit {
   tour
   tourFirstName
   tourLastName
+  user = JSON.parse(localStorage.getItem('user'))
   constructor(
     public toursService: ToursService,
     public activatedRoute: ActivatedRoute,
@@ -28,4 +29,5 @@ export class ToursDetailsComponent implements OnInit {
       }, err => this.notify.showError(err))
   }
 
+  
 }

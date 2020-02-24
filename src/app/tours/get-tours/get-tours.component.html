@@ -59,7 +59,8 @@
               <span class="card__footer-text">rating ({{tour.ratingsQuantity}})</span>
             </p>
             <a routerLink="/toursDetails/{{tour._id}}" class="btn btn--green btn--small">Details</a>
-            <button class="btn btn-danger" (click)="deleteTour(tour._id)">delete tour </button>
+            <a routerLink="/editTour/{{tour._id}}" class="btn btn-primary btn-sm" >Edit Tour</a>
+            <button class="btn btn-danger btn-sm" *ngIf="user.role === 'admin'" (click)="deleteTour(tour._id)">delete tour </button>
           </div>
         </div>
       </div>

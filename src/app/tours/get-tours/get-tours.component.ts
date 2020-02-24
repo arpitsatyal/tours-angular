@@ -10,6 +10,7 @@ import { notifyService } from 'src/app/services/toastr.service';
 })
 export class GetToursComponent implements OnInit {
   allTours
+  user = JSON.parse(localStorage.getItem('user'))
   constructor(
     public router: Router,
     public toursService: ToursService,
@@ -24,7 +25,7 @@ export class GetToursComponent implements OnInit {
   }
   deleteTour(tourId) {
     this.allTours.splice(tourId, 1)
-    this.toursService.deleteTour(tourId).subscribe(() => this.notify.showSuccess('tour deleted!'),
+    this.toursService.deleteTour(tourId).subscribe(() => this.notify.showInfo('tour deleted!'),
       err => this.notify.showError(err))
   }
 }

@@ -15,6 +15,7 @@ import { HeaderComponent } from './tours/header/header.component';
 import { FooterComponent } from './tours/footer/footer.component';
 import { WelcomeComponent } from './tours/welcome/welcome.component';
 import { ToursDetailsComponent } from './tours/tours-details/tours-details.component';
+import { EditTourComponent } from './tours/edit-tour/edit-tour.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ToursDetailsComponent } from './tours/tours-details/tours-details.compo
     HeaderComponent,
     FooterComponent,
     WelcomeComponent,
-    ToursDetailsComponent
+    ToursDetailsComponent,
+    EditTourComponent
   ],
   imports: [
     BrowserAnimationsModule,
