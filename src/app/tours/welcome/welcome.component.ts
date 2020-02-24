@@ -11,5 +11,7 @@ export class WelcomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  isLoggedIn() {
+    return localStorage.getItem('token') ? true : false
+  }
 }

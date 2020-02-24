@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { notifyService } from './toastr.service';
 import { AuthService } from './auth.service';
 import { ToursService } from './tours.service';
+import { PageNotFoundComponent } from './shared/page_not_found/four-o-four.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [PageNotFoundComponent],
   imports: [
     CommonModule
   ], 
-  exports: [],
+  exports: [PageNotFoundComponent],
 
   providers: [AuthService, notifyService, ToursService]
 })

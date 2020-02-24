@@ -1,3 +1,8 @@
+<div *ngIf="isLoggedIn()">
+    <app-get-tours></app-get-tours>
+</div>
+
+<div *ngIf="!isLoggedIn()">
 <h2>welcome to natours </h2>
 
 <h1>login</h1>
@@ -5,3 +10,4 @@
 <br>
 <h1>register</h1>
 <a routerLink="/auth/register">register</a>
+</div>

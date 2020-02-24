@@ -7,7 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'tours-angular';
-  isLoggedIn() {
-    return localStorage.getItem('token') ? true : false
-  }
 }

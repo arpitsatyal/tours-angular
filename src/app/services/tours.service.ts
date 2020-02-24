@@ -15,7 +15,13 @@ constructor(
     getTours() {
         return this.http.get(this.url, this.getOptionsWithToken())
     }
+    getTour(tourId: string) {
+        return this.http.get(`${this.url}/${tourId}`, this.getOptionsWithToken())
+    }
     postTour(data: Tour) {
         return this.http.post(this.url, data, this.getOptionsWithToken())
+    }
+    deleteTour(tourId: string) {
+        return this.http.delete(`${this.url}/${tourId}`,this.getOptionsWithToken())
     }
 }

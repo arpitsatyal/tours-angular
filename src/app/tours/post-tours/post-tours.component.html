@@ -31,3 +31,5 @@
     <button *ngIf="!submitting" [disabled]="tourForm.invalid" class="btn btn-primary" (click)="createTour()">submit</button>
     <button disabled *ngIf="submitting" class="btn btn-info">submiting...</button>
 </form>
+
+<a routerLink="/getTours">go back</a>
