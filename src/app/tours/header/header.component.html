@@ -1,6 +1,6 @@
 <header class="header">
     <nav class="nav nav--tours">
-      <a routerLink="/getTours" class="nav__el">All tours</a>
+      <a routerLink="/tours/getTours" class="nav__el">All tours</a>
       <form class="nav__search">
         <button class="nav__search-btn">
           <svg>
@@ -18,7 +18,7 @@
         <img src="./../../../assets/img/users/default.jpg" alt="User photo" class="nav__user-img" />
         <span>{{loggedInUser}}</span>
       </a>
-      <a routerLink="/createTour" class="nav__el nav__el--cta">create a tour</a>
+      <a routerLink="/tours/createTour" class="nav__el nav__el--cta">create a tour</a>
       <button class="nav__el nav__el--cta" (click)="logout()">logout</button> 
     </nav>
   </header>

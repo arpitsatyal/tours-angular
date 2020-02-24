@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/user.model';
-import { Router } from '@angular/router';
 import { notifyService } from 'src/app/services/toastr.service';
 
 @Component({
@@ -26,14 +26,10 @@ export class LoginComponent implements OnInit {
       .subscribe((res: any) => {
         localStorage.setItem('token', res.token)     
         localStorage.setItem('user', JSON.stringify(res.user))  
-        this.router.navigate(['/getTours'])
+        this.router.navigate(['/tours/getTours'])
       }, err => {
-        console.log(err)
-        setTimeout(() => this.submitting = false, 3000)
         this.notify.showError(err)
+        this.submitting = false
       })
-  }
-  isLoggedIn() {
-    return localStorage.getItem('token') ? true : false
   }
 }
