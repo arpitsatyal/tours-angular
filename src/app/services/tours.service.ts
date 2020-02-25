@@ -27,4 +27,7 @@ constructor(
     deleteTour(tourId: string) {
         return this.http.delete(`${this.url}/${tourId}`,this.getOptionsWithToken())
     }
+    searchTours(data: Tour) {
+        return this.http.post(`${this.url}/search`, data, this.getOptionsWithToken())
+    }
 }

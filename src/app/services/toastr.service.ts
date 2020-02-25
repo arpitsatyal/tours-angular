@@ -17,7 +17,7 @@ export class notifyService {
         debugger
         if (e.error.error) {
             if (e.error.error.error) this.toastrService.error(e.error.error.error)
-            this.toastrService.error(e.error.error)
+            // this.toastrService.error(e.error.error)
         }
     }
 }

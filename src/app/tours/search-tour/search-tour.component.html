@@ -1,1 +1,52 @@
-<h2>advanced search for tours </h2>
+<div *ngIf="!results.length">
+    <h2>advanced search for tours </h2>
+
+    <form class="form-group">
+        <label for="name">name</label>
+        <input class="form-control" type="text" placeholder="name" name="name" [(ngModel)]="toSearch.name">
+
+        <label for="durationTime">duration</label> <br>
+        <input type="radio" name="durationTime" value="0-10" [(ngModel)]="toSearch.durationTime">
+        <label for="0-10">0-10</label><br>
+        <input type="radio" name="durationTime" value="10-20" [(ngModel)]="toSearch.durationTime">
+        <label for="10-20">10-20</label><br>
+        <input type="radio" name="durationTime" value="20 +" [(ngModel)]="toSearch.durationTime">
+        <label for="20 +">20 +</label><br>
+
+        <label for="minPrice">minPrice</label>
+        <input class="form-control" type="number" placeholder="minPrice" name="minPrice"
+            [(ngModel)]="toSearch.minPrice">
+
+        <label for="maxPrice">maxPrice</label>
+        <input class="form-control" type="number" placeholder="maxPrice" name="maxPrice"
+            [(ngModel)]="toSearch.maxPrice">
+
+        <label for="difficulty">difficulty</label> <br>
+        <input type="radio" name="difficulty" value="easy" [(ngModel)]="toSearch.difficulty">
+        <label for="easy">easy</label><br>
+        <input type="radio" name="difficulty" value="medium" [(ngModel)]="toSearch.difficulty">
+        <label for="medium">medium</label><br>
+        <input type="radio" name="difficulty" value="difficult" [(ngModel)]="toSearch.difficulty">
+        <label for="difficult">difficult</label><br>
+
+        
+        <label for="maxGroup">Max Group Size</label> <br>
+        <input type="radio" name="maxGroup" value="0-10" [(ngModel)]="toSearch.maxGroup">
+        <label for="0-10">0-10</label><br>
+        <input type="radio" name="maxGroup" value="10-20" [(ngModel)]="toSearch.maxGroup">
+        <label for="10-20">10-20</label><br>
+        <input type="radio" name="maxGroup" value="20 +" [(ngModel)]="toSearch.maxGroup">
+        <label for="20 +">20 +</label><br>
+
+        <!-- <label for="image">Choose Image</label>
+    <input class="form-control" type="file" name="image" (change)="fileChanged($event)"> -->
+
+        <button *ngIf="!submitting" class="btn btn-primary" (click)="search()">search</button>
+        <button disabled *ngIf="submitting" class="btn btn-info">searching...</button>
+    </form>
+
+    <a routerLink="/tours/getTours">go back</a>
+</div>
+<div *ngIf="results.length">
+    <app-get-tours [inputData]="results" (searchagain)="resetSearch()"></app-get-tours>
+</div>

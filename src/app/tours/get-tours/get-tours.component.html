@@ -1,4 +1,5 @@
-  <app-header (giveToChild)="msg=$event"></app-header>
+  <app-header (giveToChild)="msg=$event" [getFromView]="allTours"></app-header>
+  <button class="btn btn-success" *ngIf="inputData" (click)="searchAgain()">search again</button>
     <section class="overview">
     <main class="main" *ngIf="!msg">
       <div class="card-container">
