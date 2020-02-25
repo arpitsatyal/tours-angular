@@ -7,7 +7,8 @@
             <use xlink:href="./../../../assets/img/icons.svg#icon-search"></use>
           </svg>
         </button>
-        <input type="text" placeholder="Search tours" class="nav__search-input"/>
+        <input type="text" placeholder="Search tours"  (keyup)="getData($event)" class="nav__search-input"/>
+        <a routerLink="/tours/searchTours" class="nav__el nav__el--cta">Advanced Search</a>
       </form>
     </nav>
     <div class="header__logo">
@@ -16,9 +17,76 @@
     <nav class="nav nav--user">
       <a routerLink="#" class="nav__el">
         <img src="./../../../assets/img/users/default.jpg" alt="User photo" class="nav__user-img" />
-        <span>{{loggedInUser}}</span>
+        <span>{{loggedInUser.username}}</span>
       </a>
       <a routerLink="/tours/createTour" class="nav__el nav__el--cta">create a tour</a>
       <button class="nav__el nav__el--cta" (click)="logout()">logout</button> 
     </nav>
   </header>
+  <section class="overview" *ngIf="matchedTour">
+    <main class="main">
+      <div class="card-container">
+        <div class="card">
+          <div class="card__header">
+            <div class="card__picture">
+              <div class="card__picture-overlay">&nbsp;</div>
+              <img
+                src="./../../../assets/img/tours/{{matchedTour.imageCover}}"
+                alt="Tour 1"
+                class="card__picture-img"
+              />
+            </div>
+
+            <h3 class="heading-tertirary">
+              <span>{{matchedTour.name}}</span>
+            </h3>
+          </div>
+
+          <div class="card__details">
+            <h4 class="card__sub-heading">{{matchedTour.difficulty}} {{matchedTour.duration}} day tour</h4>
+            <p class="card__text">
+              {{matchedTour.summary}}
+            </p>
+            <div class="card__data">
+              <svg class="card__icon">
+                <use xlink:href="./../../../assets/img/icons.svg#icon-map-pin"></use>
+              </svg>
+              <span>Banff, Canada</span>
+            </div>
+            <div class="card__data">
+              <svg class="card__icon">
+                <use xlink:href="./../../../assets/img/icons.svg#icon-calendar"></use>
+              </svg>
+              <span>April 2021</span>
+            </div>
+            <div class="card__data">
+              <svg class="card__icon">
+                <use xlink:href="./../../../assets/img/icons.svg#icon-flag"></use>
+              </svg>
+              <span>3 stops</span>
+            </div>
+            <div class="card__data">
+              <svg class="card__icon">
+                <use xlink:href="./../../../assets/img/icons.svg#icon-user"></use>
+              </svg>
+              <span>{{matchedTour.maxGroupSize}}</span>
+            </div>
+          </div>
+
+          <div class="card__footer">
+            <p>
+              <span class="card__footer-value">{{matchedTour.price}} </span>
+              <span class="card__footer-text">per person</span>
+            </p>
+            <p class="card__ratings">
+              <span class="card__footer-value">{{matchedTour.ratingsAverage}} </span>
+              <span class="card__footer-text">rating ({{matchedTour.ratingsQuantity}})</span>
+            </p>
+            <a routerLink="/tours/tourDetails/{{matchedTour._id}}" class="btn btn--green btn--small">Details</a>
+            <a routerLink="/tours/editTour/{{matchedTour._id}}" class="btn btn-primary btn-sm" *ngIf="loggedInUser.role === 'admin'" >Edit Tour</a>
+            <button class="btn btn-danger btn-sm" *ngIf="loggedInUser.role === 'admin'" (click)="deleteTour(matchedTour._id)">delete tour </button>
+          </div>
+        </div>
+      </div>
+    </main>
+    </section> 

@@ -9,6 +9,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { GetToursComponent } from './get-tours/get-tours.component';
+import { SearchTourComponent } from './search-tour/search-tour.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { GetToursComponent } from './get-tours/get-tours.component';
         PostToursComponent,
         WelcomeComponent,
         HeaderComponent,
-        FooterComponent
+        FooterComponent,
+        SearchTourComponent
     ],
     imports: [
         CommonModule,

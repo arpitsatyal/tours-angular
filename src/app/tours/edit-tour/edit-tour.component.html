@@ -1,28 +1,26 @@
 <h2>edit tour </h2>
-
 <form class="form-group">
     <label for="name">name</label>
-    <input class="form-control" type="text" placeholder="name" name="name" [(ngModel)]="tour.name">
-
+    <input class="form-control" type="text"  placeholder="{{oldTour.name}}" name="name" [(ngModel)]="tour.name">
     <label for="duration">duration</label>
-    <input class="form-control" type="number" placeholder="duration" name="duration" [(ngModel)]="tour.duration">
+    <input class="form-control" type="number" placeholder="{{oldTour.duration}}" name="duration" [(ngModel)]="tour.duration">
 
     <label for="price">price</label>
-    <input class="form-control" type="number" placeholder="price" name="price" [(ngModel)]="tour.price">
+    <input class="form-control" type="number" placeholder="{{oldTour.price}}" name="price" [(ngModel)]="tour.price">
 
     <label for="summary">summary</label>
-    <input class="form-control" type="text" placeholder="summary" name="summary" [(ngModel)]="tour.summary">
+    <input class="form-control" type="text" placeholder="{{oldTour.summary}}" name="summary" [(ngModel)]="tour.summary">
 
     <label for="difficulty">difficulty</label> <br>
-    <input type="radio" name="difficulty" value="easy" [(ngModel)]="tour.difficulty">
+    <input type="radio" name="difficulty" placeholder="easy" [(ngModel)]="tour.difficulty">
     <label for="easy">easy</label><br>
-    <input type="radio"  name="difficulty" value="medium" [(ngModel)]="tour.difficulty">
+    <input type="radio"  name="difficulty" placeholder="medium" [(ngModel)]="tour.difficulty">
     <label for="medium">medium</label><br>
-    <input type="radio"  name="difficulty" value="difficult"  [(ngModel)]="tour.difficulty">
+    <input type="radio"  name="difficulty" placeholder="difficult"  [(ngModel)]="tour.difficulty">
     <label for="difficult">difficult</label><br>
 
     <label for="maxGroupSize">maxGroupSize</label>
-    <input class="form-control" type="number" placeholder="maxGroupSize" name="maxGroupSize"
+    <input class="form-control" type="number" placeholder="{{oldTour.maxGroupSize}}" name="maxGroupSize"
         [(ngModel)]="tour.maxGroupSize">
 
 

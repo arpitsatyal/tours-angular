@@ -28,6 +28,4 @@ export class ToursDetailsComponent implements OnInit {
         this.tourLastName = result.tour.name.split(' ')[2]
       }, err => this.notify.showError(err))
   }
-
-  
 }

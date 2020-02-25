@@ -10,21 +10,24 @@ import { Tour } from 'src/app/models/tour.model';
   styleUrls: ['./edit-tour.component.css']
 })
 export class EditTourComponent implements OnInit {
-  public tour
+  tour
+  oldTour
   submitting = false
+  public id = this.activatedRoute.snapshot.params.id
   constructor(
     public notify: notifyService,
     public toursService: ToursService,
-    public activatedRoute: ActivatedRoute
+    public activatedRoute: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
     this.tour = new Tour({})
+    this.toursService.getTour(this.id).subscribe((res:any) => this.oldTour = res.tour)
   }
 
   editTour(data) {
     this.submitting = true
-    this.toursService.updateTour(this.activatedRoute.snapshot.params.id, data)
+    this.toursService.updateTour(this.id, data)
     .subscribe(() => {
       this.notify.showSuccess('tour updated!')
       this.submitting= false

@@ -10,6 +10,7 @@ import { notifyService } from 'src/app/services/toastr.service';
 })
 export class GetToursComponent implements OnInit {
   allTours
+  msg: any
   user = JSON.parse(localStorage.getItem('user'))
   constructor(
     public router: Router,

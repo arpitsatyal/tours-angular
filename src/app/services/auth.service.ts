@@ -15,6 +15,6 @@ export class AuthService extends BaseService {
     return this.http.post(`${this.url}/login`, data, this.getOptions())
   }
   register(data: User) {
-    return this.http.post(`${this.url}/`, data, this.getOptions())
+    return this.http.post(`${this.url}/signup`, data, this.getOptions())
   }
 }
