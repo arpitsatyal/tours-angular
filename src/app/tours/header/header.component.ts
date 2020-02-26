@@ -19,11 +19,6 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.toursService.getTours()
-    // .subscribe((data: any) => {
-     
-    //   this.allTours = data.tours
-    // }, err => console.log(err))
   }
 
   logout() {
@@ -32,7 +27,14 @@ export class HeaderComponent implements OnInit {
   }
   getData(ev) {
     this.getFromView.forEach(tour => {
-      if (tour.name === ev.target.value) {
+      var splitted = tour.name.split(' ')
+      let name
+      if(splitted.length === 1) {
+        name = tour.name
+      } else if(splitted.length > 1) {
+      name = splitted[0] + ' ' + splitted[1]
+      }
+      if (name === ev.target.value) {
         this.matchedTour = tour
         this.giveToChild.emit(this.matchedTour)
       } else if (ev.key === 'Backspace') {

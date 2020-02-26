@@ -15,9 +15,14 @@ export class notifyService {
     }
     showError(e) {
         debugger
-        if (e.error.error) {
-            if (e.error.error.error) this.toastrService.error(e.error.error.error)
-            // this.toastrService.error(e.error.error)
+        if(e.error) {
+            if(typeof(e.error) === 'object') {
+               e.error.error.error ?  this.toastrService.error(e.error.error.error) : this.toastrService.error(e.error.error)
+            } else if(typeof(e.error) === 'string') {
+                this.toastrService.error(e.error)
+            } else {
+                this.toastrService.error('something went wrong!')
+            }
         }
     }
 }

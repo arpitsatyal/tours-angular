@@ -1,0 +1,48 @@
+    <div class="user-view">
+        <nav class="user-view__menu">
+            <ul class="side-nav">
+                <li class="side-nav--active"><a routerLink="#"><svg>
+                            <use xlink:href="./../../../assets/img/icons.svg#icon-settings"></use>
+                        </svg>Settings</a></li>
+                <li><a routerLink="#"><svg>
+                            <use xlink:href="./../../../assets/img/icons.svg#icon-briefcase"></use>
+                        </svg>My bookings</a></li>
+                <li><a routerLink="#"><svg>
+                            <use xlink:href="./../../../assets/img/icons.svg#icon-star"></use>
+                        </svg>My reviews</a></li>
+                <li><a routerLink="/users/changePassword"><svg>
+                            <use xlink:href="./../../../assets/img/icons.svg#icon-credit-card"></use>
+                        </svg>Change Password</a></li>
+            </ul>
+            <div class="admin-nav" *ngIf="user.role === 'admin'">
+                <h5 class="admin-nav__heading">Admin</h5>
+                <ul class="side-nav">
+                    <li><a routerLink="#"><svg>
+                                <use xlink:href="./../../../assets/img/icons.svg#icon-map"></use>
+                            </svg>Manage tours</a></li>
+                    <li><a routerLink="#"><svg>
+                                <use xlink:href="./../../../assets/img/icons.svg#icon-users"></use>
+                            </svg>Manage users</a></li>
+                    <li><a routerLink="#"><svg>
+                                <use xlink:href="./../../../assets/img/icons.svg#icon-star"></use>
+                            </svg>Manage reviews</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="user-view__content">
+            <div class="user-view__form-container">
+                <h2 class="heading-secondary ma-bt-md">Your account settings</h2>
+                <form class="form form-user-data">
+                    <div class="form__group"><label class="form__label" for="name">Name</label>
+                        <input class="form__input" name="name" type="text" [(ngModel)]="toUpdate.username"></div>
+                    <div class="form__group ma-bt-md"><label class="form__label" for="email">Email address</label>
+                        <input class="form__input" name="email" type="email" [(ngModel)]="toUpdate.email"></div>
+                    <div class="form__group form__photo-upload">
+                        <img class="form__user-photo" src="./../../../assets/img/user.jpg" alt="User photo" />
+                        <a class="btn-text" href="">Choose new photo</a></div>
+                    <div class="form__group right">
+                        <button class="btn btn--small btn--green" (click)="updateMe()">Save settings</button></div>
+                </form>
+            </div>
+        </div>
+    </div>

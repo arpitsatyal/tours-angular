@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app.routing';
 import { ServicesModule } from './services/services.module';
 import { AuthModule } from './auth/auth.module';
 import { TourModule } from './tours/tour.module';
+import { UsersModule } from './users/users.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { TourModule } from './tours/tour.module';
     ServicesModule,
     AuthModule,
     TourModule,
+    UsersModule,
     ToastrModule.forRoot()
   ],
   exports: [],

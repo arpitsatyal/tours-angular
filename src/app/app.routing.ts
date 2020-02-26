@@ -7,6 +7,7 @@ let AuthRoutes: Routes = [
     { path: '', pathMatch: 'full', component: WelcomeComponent },
     {path: 'auth', loadChildren: './auth/auth.module#AuthModule'},
     {path: 'tours', loadChildren: './tours/tour.module#TourModule'},
+    {path: 'users', loadChildren: './users/users.module#UsersModule'},
     { path: '**', component: PageNotFoundComponent }
 ]
 @NgModule({

@@ -38,8 +38,8 @@
         <input type="radio" name="maxGroup" value="20 +" [(ngModel)]="toSearch.maxGroup">
         <label for="20 +">20 +</label><br>
 
-        <!-- <label for="image">Choose Image</label>
-    <input class="form-control" type="file" name="image" (change)="fileChanged($event)"> -->
+        <label for="location">location</label>
+        <input class="form-control" type="text" placeholder="location" name="location" [(ngModel)]="toSearch.location" required>
 
         <button *ngIf="!submitting" class="btn btn-primary" (click)="search()">search</button>
         <button disabled *ngIf="submitting" class="btn btn-info">searching...</button>
