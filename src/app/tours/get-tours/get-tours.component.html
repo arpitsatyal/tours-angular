@@ -61,7 +61,7 @@
             </p>
             <a routerLink="/tours/tourDetails/{{tour._id}}" class="btn btn--green btn--small">Details</a>
             <a routerLink="/tours/editTour/{{tour._id}}" class="btn btn-primary btn-sm" *ngIf="user.role === 'admin'" >Edit Tour</a>
-            <button class="btn btn-danger btn-sm" *ngIf="user.role === 'admin'" (click)="deleteTour(tour._id)">delete tour </button>
+            <button class="btn btn-danger" *ngIf="user.role === 'admin'" (click)="deleteTour(tour._id)">delete tour </button>
           </div>
         </div>
       </div>

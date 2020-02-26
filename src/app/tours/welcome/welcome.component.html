@@ -5,9 +5,12 @@
 <div *ngIf="!isLoggedIn()">
 <h2>welcome to natours </h2>
 
-<h1>login</h1>
-<a routerLink="/auth/login">login</a>
+<h2>login</h2>
+<a routerLink="/auth/login" class="btn btn-primary">login</a>
 <br>
-<h1>register</h1>
-<a routerLink="/auth/register">register</a>
+<h2>forgot password?</h2>
+<a routerLink="/auth/forgotPassword" class="btn btn-primary">forgot password</a>
+<br>
+<h2>register</h2>
+<a routerLink="/auth/register" class="btn btn-primary">register</a>
 </div>
