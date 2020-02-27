@@ -67,4 +67,5 @@
       </div>
     </main>
     </section>
+    <mat-paginator [length]="total" [pageSize]="limit" [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)"></mat-paginator>
     <app-footer></app-footer>

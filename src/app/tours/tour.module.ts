@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { GetToursComponent } from './get-tours/get-tours.component';
 import { SearchTourComponent } from './search-tour/search-tour.component';
+import {MatPaginatorModule} from '@angular/material/paginator'
 
 @NgModule({
     declarations: [
@@ -25,9 +26,10 @@ import { SearchTourComponent } from './search-tour/search-tour.component';
     imports: [
         CommonModule,
         FormsModule,
-        ToursRoutingModule
+        ToursRoutingModule,
+        MatPaginatorModule
     ],
     exports: []
 })
 
-export class TourModule {}
+export class TourModule { }

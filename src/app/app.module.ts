@@ -20,7 +20,7 @@ import { UsersModule } from './users/users.module';
     ServicesModule,
     AuthModule,
     TourModule,
-    UsersModule,
+    UsersModule, 
     ToastrModule.forRoot()
   ],
   exports: [],

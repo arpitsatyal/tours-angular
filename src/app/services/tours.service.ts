@@ -12,8 +12,9 @@ constructor(
 ) {
     super('tours')
 }
-    getTours() {
-        return this.http.get(this.url, this.getOptionsWithToken())
+    getTours(limit: number,page: number) {
+        let queryParams = `?page=${page}&limit=${limit}`
+        return this.http.get(this.url + queryParams, this.getOptionsWithToken())
     }
     getTour(tourId: string) {
         return this.http.get(`${this.url}/${tourId}`, this.getOptionsWithToken())
