@@ -27,8 +27,8 @@
         [(ngModel)]="tour.maxGroupSize">
 
 
-    <!-- <label for="image">Choose Image</label>
-    <input class="form-control" type="file" name="image" (change)="fileChanged($event)"> -->
+    <label for="image">Choose Image</label>
+    <input class="form-control" type="file" (change)="onFileSelected($event)">
 
     <button  [hidden]="submitting" class="btn btn-primary" (click)="editTour(tour)">submit</button>
     <button [hidden]="!submitting" class="btn btn-info">submitting...</button>

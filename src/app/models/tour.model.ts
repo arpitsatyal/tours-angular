@@ -16,6 +16,6 @@ export class Tour {
         this.price = details.price || ''
         this.summary = details.summary || ''
         this.imageCover = details.imageCover || ''
-        this.images = details.imageCover || ''
+        this.images = details.images || ''
     }
 }

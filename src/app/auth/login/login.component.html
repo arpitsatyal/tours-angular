@@ -1,14 +1,25 @@
-<div>
-    <h2>login</h2>
+<main class="main">
+    <div class="login-form">
+        <h2 class="heading-secondary ma-bt-lg">login</h2>
 
-<form class="form control">
-    <input class="form control"  type="text" name="username"  placeholder="username" [(ngModel)]="user.username">
-    <br>
-    <input class="form control"  type="password" name="password" placeholder="password" [(ngModel)]="user.password">
-    <button class="btn btn-primary" (click) ="login($event)" [hidden]="submitting">login</button>
-    <button class="btn btn-info" [hidden]="!submitting">logging in...</button>
+        <form class="form" #formInput="ngForm" novalidate>
+            <div class="form__group">
+                <label class="form__label" for="email">username</label>
+                <input class="form__input" name="username" required [(ngModel)]="user.username" placeholder="username"></div>
 
-</form>
+                <div class="form__group ma-bt-md">
+                    <label class="form__label" for="password">Password</label>
+                    <input class="form__input"  type="password" name="password" placeholder="password"
+                    [(ngModel)]="user.password" required #pass="ngModel" minlength="5"></div>
 
-<a routerLink='/auth/register'>register here</a>
-</div>
+                    <div class="danger" *ngIf="pass.invalid && pass.dirty">
+                        <div *ngIf="pass.errors.required">required field...</div>
+                        <div *ngIf="pass.errors.minlength">password too short...</div>
+                    </div>
+
+            <div class="form__group">
+                <button class="btn btn--green" (click) ="login($event)" [disabled]="formInput.invalid" [hidden]="submitting">login</button>
+                <button class="btn btn--green" [hidden]="!submitting">loggging in...</button></div>
+        </form>
+    </div>
+</main>

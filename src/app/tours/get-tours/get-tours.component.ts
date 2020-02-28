@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ToursService } from 'src/app/services/tours.service';
 import { notifyService } from 'src/app/services/toastr.service';
 import { PageEvent } from '@angular/material/paginator';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-get-tours',
@@ -15,6 +16,7 @@ export class GetToursComponent implements OnInit {
   page = 1
   total = 0
   limit = 6
+  imagePath
   pageSizeOptions = [1,2,3,4]
   user = JSON.parse(localStorage.getItem('user'))
   @Input() inputData: any
@@ -23,7 +25,11 @@ export class GetToursComponent implements OnInit {
     public router: Router,
     public toursService: ToursService,
     public notify: notifyService
-  ) { }
+
+    ) { 
+    this.imagePath = environment.imageUrl + '/tours/'
+
+    }
 
   ngOnInit(): void {
     this.toursService.getTours(this.limit, this.page)
@@ -33,8 +39,9 @@ export class GetToursComponent implements OnInit {
         } else {
         this.allTours = data.tours
         this.total = data.numTours
+        this.pageSizeOptions.push(data.numTours)
         }
-      }, err => console.log(err))
+      }, err => this.notify.showError(err))
   }
   deleteTour(tourId) {
     this.allTours.splice(tourId, 1)
@@ -45,12 +52,10 @@ export class GetToursComponent implements OnInit {
     this.searchagain.emit()
   }
   onPageChange(pageData: PageEvent) {
-    console.log(pageData)
     this.limit = pageData.pageSize
     this.page = pageData.pageIndex + 1
     this.toursService.getTours(this.limit, this.page).subscribe((res:any) => {
-      console.log('res after', res)
-      this.allTours= res.tours
+      this.allTours = res.tours
     }, err => this.notify.showError(err))
   }
 }

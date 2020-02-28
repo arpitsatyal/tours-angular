@@ -1,24 +1,32 @@
-<h2>register</h2>
-
-<form class="form-group" #formInput="ngForm" novalidate>
-    <input class="form-control" type="text" name="username" required [(ngModel)]="user.username" placeholder="username">
-    <br>
-    <input class="form-control" type="password" name="password" placeholder="password"
-    [(ngModel)]="user.password" required #pass="ngModel" minlength="5"> 
-    <div class="danger" *ngIf="pass.invalid && pass.dirty">
-        <div *ngIf="pass.errors.required">required field...</div>
-        <div *ngIf="pass.errors.minlength">password too short...</div>
+<main class="main">
+    <div class="login-form">
+        <h2 class="heading-secondary ma-bt-lg">register now</h2>
+        <form class="form" #formInput="ngForm" novalidate>
+            <div class="form__group">
+                <label class="form__label" for="email">username</label>
+                <input class="form__input" name="username" required [(ngModel)]="user.username" placeholder="username"></div>
+                <div class="form__group ma-bt-md">
+                    <label class="form__label" for="password">Password</label>
+                    <input class="form__input"  type="password" name="password" placeholder="password"
+                    [(ngModel)]="user.password" required #pass="ngModel" minlength="5"></div>
+                    <div class="danger" *ngIf="pass.invalid && pass.dirty">
+                        <div *ngIf="pass.errors.required">required field...</div>
+                        <div *ngIf="pass.errors.minlength">password too short...</div>
+                    </div>
+            <div class="form__group ma-bt-md">
+                <div class="form__group">
+                    <label class="form__label" for="email">email</label>
+                    <input class="form__input" name="email" required [(ngModel)]="user.email" email placeholder="email" #email="ngModel"></div>
+                    <div class="danger" *ngIf="email.invalid && email.dirty">
+                        <div *ngIf="email.errors.required">required field</div>
+                        <div *ngIf="email.errors.email">invalid email</div>
+                    </div>
+              
+            <div class="form__group">
+                <button class="btn btn--green" (click) ="register($event)" [disabled]="formInput.invalid" [hidden]="submitting">register</button></div>
+                <button class="btn btn--green" [hidden]="!submitting">registering...</button></div>
+        </form>
     </div>
-    <br>
-    <input type="text" name="email" required [(ngModel)]="user.email" email placeholder="email" #email="ngModel">
-    <div class="danger" *ngIf="email.invalid && email.dirty">
-        <div *ngIf="email.errors.required">required field</div>
-        <div *ngIf="email.errors.email">invalid email</div>
-    </div>
-    <br>
-    <button class="btn btn-primary" (click) ="register($event)" [disabled]="formInput.invalid" [hidden]="submitting">register</button>
-
-    <button class="btn btn-info" [hidden]="!submitting">registering...</button>
-</form>
-
 <a routerLink='/auth/login'>already register? now login</a>
+
+</main>

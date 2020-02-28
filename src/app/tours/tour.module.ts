@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule} from "@angular/core";
 import { EditTourComponent } from './edit-tour/edit-tour.component';
 import { ToursDetailsComponent } from './tours-details/tours-details.component';
 import { PostToursComponent } from './post-tours/post-tours.component';
@@ -28,8 +28,7 @@ import {MatPaginatorModule} from '@angular/material/paginator'
         FormsModule,
         ToursRoutingModule,
         MatPaginatorModule
-    ],
-    exports: []
+    ]
 })
 
 export class TourModule { }

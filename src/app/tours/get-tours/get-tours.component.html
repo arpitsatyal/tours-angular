@@ -7,11 +7,16 @@
           <div class="card__header">
             <div class="card__picture">
               <div class="card__picture-overlay">&nbsp;</div>
-              <img
+              <!-- <img
                 src="./../../../assets/img/tours/{{tour.imageCover}}"
                 alt="Tour 1"
                 class="card__picture-img"
-              />
+              /> -->
+              <img
+              src="{{imagePath}}{{tour.imageCover}}"
+              alt="Tour 1"
+              class="card__picture-img"
+            />
             </div>
 
             <h3 class="heading-tertirary">
@@ -67,5 +72,5 @@
       </div>
     </main>
     </section>
-    <mat-paginator [length]="total" [pageSize]="limit" [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)"></mat-paginator>
+    <mat-paginator  *ngIf="!inputData" [length]="total" [pageSize]="limit" [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)"></mat-paginator>
     <app-footer></app-footer>

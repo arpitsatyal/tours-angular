@@ -22,4 +22,12 @@ export class BaseService {
           })
         }
       }
+
+      getToken() {
+        return {
+          headers: new HttpHeaders({
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          })
+        }
+      }
 }
