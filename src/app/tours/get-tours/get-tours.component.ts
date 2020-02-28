@@ -27,7 +27,7 @@ export class GetToursComponent implements OnInit {
     public notify: notifyService
 
     ) { 
-    this.imagePath = environment.imageUrl + '/tours/'
+    this.imagePath = environment.imageUrl + '/tours'
 
     }
 

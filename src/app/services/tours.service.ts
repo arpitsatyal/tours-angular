@@ -13,12 +13,16 @@ constructor(
     super('tours')
 }
 
-uploadWithImage(id, data, image) {
+uploadWithImage(id, data, images) {
     let fd = new FormData()
     for(let key in data) {
         fd.append(key, data[key])
     }
-    fd.append('imageCover', image, image.name)
+    if(images.length > 1) {
+        images.forEach(i => fd.append('images', i, i.name))
+    } else {
+    fd.append('imageCover', images, images.name)
+    }
     return fd
 }
     getTours(limit: number,page: number) {

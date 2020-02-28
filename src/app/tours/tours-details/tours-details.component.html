@@ -80,31 +80,19 @@
     </section>
 
     <section class="section-pictures">
-      <div class="picture-box">
-        <img
+      <div class="picture-box" *ngFor="let i of tour.images">
+        <img 
           class="picture-box__img picture-box__img--1"
-          src="./../../../assets/img/tours/tour-5-1.jpg"
-          alt="The Park Camper Tour 1"
-        />
+          src="{{imageUrl}}/{{i}}"
+          alt="The Park Camper Tour 1" 
+        >
       </div>
-      <div class="picture-box">
-        <img
-          class="picture-box__img picture-box__img--2"
-          src="./../../../assets/img/tours/tour-5-2.jpg"
-          alt="The Park Camper Tour 1"
-        />
-      </div>
-      <div class="picture-box">
-        <img
-          class="picture-box__img picture-box__img--3"
-          src="./../../../assets/img/tours/tour-5-3.jpg"
-          alt="The Park Camper Tour 1"
-        />
-      </div>
+      
       <form *ngIf="user.role === 'admin'">
         <label for="files">Select files:</label>
-        <input type="file" id="files" name="files" multiple><br><br>
-        <input type="submit">Upload photos
+        <input type="file" (change)="onFilesSelected($event)" multiple ><br><br>
+        <button class="btn btn-primary" (click)="uploadMultiple(tour)" [hidden]="submitting">upload files</button>
+        <button class="btn btn-info"  [hidden]="!submitting">uploading...</button>
       </form>
     </section>
   

@@ -27,6 +27,7 @@ export class EditTourComponent implements OnInit {
   }
 
   onFileSelected(ev) {
+    console.log(ev)
     this.selectedFile = ev.target.files[0]
   }
 
