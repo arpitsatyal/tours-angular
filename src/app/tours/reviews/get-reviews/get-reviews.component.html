@@ -1,4 +1,6 @@
 <section class="section-reviews">
+  <a routerLink="/tours/{{tourId}}/reviews/createReview" class="btn btn-primary" style="float: center;">create review</a>
+
     <div class="reviews">
       <div class="reviews__card" *ngFor="let rev of reviews">
         <div class="reviews__avatar">
@@ -10,24 +12,15 @@
           <h6 class="reviews__user">{{user.username}}</h6>
         </div>
         <p class="reviews__text">
-         {{rev.name}}
+         {{rev.name}} 
         </p>
-        <div class="reviews__rating">
-          <svg class="reviews__star reviews__star--active">
-            <use xlink:href="./../../../assets/img/icons.svg#icon-star"></use>
-          </svg>
-          <svg class="reviews__star reviews__star--active">
-            <use xlink:href="./../../../assets/img/icons.svg#icon-star"></use>
-          </svg>
-          <svg class="reviews__star reviews__star--active">
-            <use xlink:href="./../../../assets/img/icons.svg#icon-star"></use>
-          </svg>
-          <svg class="reviews__star reviews__star--active">
-            <use xlink:href="./../../../assets/img/icons.svg#icon-star"></use>
-          </svg>
-          <svg class="reviews__star reviews__star--active">
-            <use xlink:href="./../../../assets/img/icons.svg#icon-star"></use>
-          </svg>
+        <div class="reviews__rating" *ngFor="let rat of ratings">
+          <svg class="reviews__star reviews__star--active" *ngIf="rat <= rev.rating"> 
+            <use xlink:href="./../../../assets/img/icons.svg#icon-star" ></use>
+          </svg> 
+          <svg class="reviews__star reviews__star--inactive" *ngIf="rat > rev.rating"> 
+            <use xlink:href="./../../../assets/img/icons.svg#icon-star" ></use>
+          </svg> 
         </div>
       </div>
     </div>

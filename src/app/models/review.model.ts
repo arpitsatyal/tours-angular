@@ -1,8 +1,8 @@
 export class Review {
-    review: string
+    name: string
     rating
     constructor(details: any) {
-        this.review = details.review || ''
+        this.name = details.name || ''
         this.rating = details.rating || ''
     }
 }

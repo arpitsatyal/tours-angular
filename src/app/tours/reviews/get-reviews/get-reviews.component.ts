@@ -13,6 +13,8 @@ export class GetReviewsComponent implements OnInit {
   reviews
   imagePath
   @Input() user
+  ratings = [1,2,3,4,5]
+  tourId = this.activatedRoute.snapshot.params.id
   constructor(
     public activatedRoute: ActivatedRoute,
     public reviewsService: ReviewService,
@@ -22,12 +24,9 @@ export class GetReviewsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      let tourId = this.activatedRoute.snapshot.params.id
-      this.reviewsService.getReview(tourId).subscribe((res: any) => {
+      this.reviewsService.getReview(this.tourId).subscribe((res: any) => {
         this.reviews = res.reviews
-      }, err => {
-        this.notify.showError(err)
-      })
+      }, 
+      err => this.notify.showError(err))
   }
-
 }

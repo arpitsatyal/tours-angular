@@ -5,14 +5,15 @@ import { EditTourComponent } from './edit-tour/edit-tour.component';
 import { ToursDetailsComponent } from './tours-details/tours-details.component';
 import { GetToursComponent } from './get-tours/get-tours.component';
 import { SearchTourComponent } from './search-tour/search-tour.component';
-import { GetReviewsComponent } from './reviews/get-reviews/get-reviews.component';
+import { CreateReviewComponent } from './reviews/create-review/create-review.component';
 
 const routes: Routes = [
     {path: 'getTours', component: GetToursComponent},
     { path: 'createTour', component: PostToursComponent },
     { path: 'editTour/:id', component: EditTourComponent },
     {path: 'tourDetails/:id', component: ToursDetailsComponent},
-    {path: 'searchTours', component: SearchTourComponent}
+    {path: 'searchTours', component: SearchTourComponent},
+    {path: ':tourId/reviews/createReview', component: CreateReviewComponent}
 ]
 
 @NgModule({

@@ -1,1 +1,22 @@
-<p>create-review works!</p>
+<main class="main">
+    <div class="login-form">
+        <h2 class="heading-secondary ma-bt-lg">create review</h2>
+
+        <form class="form" #formInput="ngForm" novalidate>
+            <div class="form__group">
+                <label class="form__label">review</label>
+                <input class="form__input" name="name" required [(ngModel)]="review.name" placeholder="review"></div>
+
+                <div class="form__group ma-bt-md">
+                    <label class="form__label">rating</label>
+                    <input class="form__input"  type="number" name="rating" placeholder="rating"
+                    [(ngModel)]="review.rating" required ></div>
+
+
+            <div class="form__group">
+                <button class="btn btn--green" (click) ="createRev(review)" [disabled]="formInput.invalid" [hidden]="submitting">submit</button>
+                <button class="btn btn--green" [hidden]="!submitting">submitting...</button></div>
+        </form>
+    </div>
+    <a routerLink="/tours/tourDetails/{{tourId}}" class="btn btn-primary">go back</a>
+</main>
