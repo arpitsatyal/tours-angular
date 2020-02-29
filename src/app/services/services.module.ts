@@ -5,6 +5,7 @@ import { AuthService } from './auth.service';
 import { ToursService } from './tours.service';
 import { PageNotFoundComponent } from './shared/page_not_found/four-o-four.component';
 import { UsersService } from './users.service';
+import {UploadService} from './uploadService'
 
 @NgModule({
   declarations: [PageNotFoundComponent],
@@ -13,6 +14,6 @@ import { UsersService } from './users.service';
   ], 
   exports: [PageNotFoundComponent],
 
-  providers: [AuthService, notifyService, ToursService, UsersService]
+  providers: [AuthService, notifyService, ToursService, UsersService, UploadService]
 })
 export class ServicesModule { }
