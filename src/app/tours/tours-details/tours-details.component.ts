@@ -17,7 +17,7 @@ export class ToursDetailsComponent implements OnInit {
   selectedFiles = null
   submitting = false
   imageUrl
-  user = JSON.parse(localStorage.getItem('user'))
+  public user = JSON.parse(localStorage.getItem('user'))
   constructor(
     public toursService: ToursService,
     public activatedRoute: ActivatedRoute,
@@ -42,10 +42,11 @@ export class ToursDetailsComponent implements OnInit {
     }
     console.log(this.AllImages)
   }
-  uploadMultiple(data) {
+  uploadMultiple() {
     this.submitting = true
-    this.toursService.updateTour(this.activatedRoute.snapshot.params.id, data, this.AllImages)
-      .subscribe(() => {
+    this.toursService.updateTour(this.activatedRoute.snapshot.params.id, this.tour, this.AllImages)
+      .subscribe((res: any) => {
+        this.tour.images = res.tour.images
         this.notify.showSuccess('all files uploaded!')
         this.submitting = false
       }, err => {

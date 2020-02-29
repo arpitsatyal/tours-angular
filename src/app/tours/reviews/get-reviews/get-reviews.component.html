@@ -1,0 +1,34 @@
+<section class="section-reviews">
+    <div class="reviews">
+      <div class="reviews__card" *ngFor="let rev of reviews">
+        <div class="reviews__avatar">
+          <img
+            src="{{imagePath}}/{{user.profilePic}}"
+            alt=""
+            class="reviews__avatar-img"
+          />
+          <h6 class="reviews__user">{{user.username}}</h6>
+        </div>
+        <p class="reviews__text">
+         {{rev.name}}
+        </p>
+        <div class="reviews__rating">
+          <svg class="reviews__star reviews__star--active">
+            <use xlink:href="./../../../assets/img/icons.svg#icon-star"></use>
+          </svg>
+          <svg class="reviews__star reviews__star--active">
+            <use xlink:href="./../../../assets/img/icons.svg#icon-star"></use>
+          </svg>
+          <svg class="reviews__star reviews__star--active">
+            <use xlink:href="./../../../assets/img/icons.svg#icon-star"></use>
+          </svg>
+          <svg class="reviews__star reviews__star--active">
+            <use xlink:href="./../../../assets/img/icons.svg#icon-star"></use>
+          </svg>
+          <svg class="reviews__star reviews__star--active">
+            <use xlink:href="./../../../assets/img/icons.svg#icon-star"></use>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>

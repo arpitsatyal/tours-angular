@@ -3,13 +3,11 @@ export class User {
     email: string
     password: string
     role: string
-    profilePic
 
     constructor(details: any) {
         this.username = details.username || '',
         this.email = details.email || '',
         this.password = details.password || '',
-        this.role = details.role || '',
-        this.profilePic = details.profilePic || ''
+        this.role = details.role || ''
     }
 }

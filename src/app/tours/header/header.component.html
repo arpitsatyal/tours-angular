@@ -16,7 +16,7 @@
     </div>
     <nav class="nav nav--user">
       <a routerLink="/users/me/{{loggedInUser._id}}" class="nav__el">
-        <img src="./../../../assets/img/users/default.jpg" alt="User photo" class="nav__user-img" />
+        <img src="{{pathForUser}}/{{loggedInUser.profilePic}}" alt="User photo" class="nav__user-img" />
         <span>{{loggedInUser.username}}</span>
       </a>
       <a routerLink="/tours/createTour" class="nav__el nav__el--cta">create a tour</a>
@@ -32,7 +32,7 @@
             <div class="card__picture">
               <div class="card__picture-overlay">&nbsp;</div>
               <img
-                src="./../../../assets/img/tours/{{matchedTour.imageCover}}"
+                src="{{pathForTours}}/{{matchedTour.imageCover}}"
                 alt="Tour 1"
                 class="card__picture-img"
               />

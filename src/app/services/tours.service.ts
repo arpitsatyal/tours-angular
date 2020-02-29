@@ -15,30 +15,33 @@ export class ToursService extends BaseService {
         super('tours')
     }
 
+    uploadWhich(id, data, images) {
+        let toUpload
+        if (images.length > 1) {
+            toUpload = this.uploadService.uploadWithImage(id, data, images, 'images')
+        } else {
+            toUpload = this.uploadService.uploadWithImage(id, data, images, 'imageCover')
+        }
+        return toUpload
+    }
+
     getTours(limit: number, page: number) {
         let queryParams = `?page=${page}&limit=${limit}`
         return this.http.get(this.url + queryParams, this.getOptionsWithToken())
     }
+
     getTour(tourId: string) {
         return this.http.get(`${this.url}/${tourId}`, this.getOptionsWithToken())
     }
-    postTour(data: Tour, image) {
+
+    postTour(data: Tour, images) {
         let id = undefined
-        let toSend
-        if (image.length > 1) {
-            toSend = this.uploadService.uploadWithImage(id, data, image, 'images')
-        } else {
-            toSend = this.uploadService.uploadWithImage(id, data, image, 'imageCover')
-        }
+        let toSend = this.uploadWhich(id, data, images)
         return this.http.post(this.url, toSend, this.getToken())
     }
-    updateTour(tourId: string, data: Tour, image) {
-        let toSend
-        if (image.length > 1) {
-            toSend = this.uploadService.uploadWithImage(tourId, data, image, 'images')
-        } else {
-            toSend = this.uploadService.uploadWithImage(tourId, data, image, 'imageCover')
-        }
+
+    updateTour(tourId: string, data: Tour, images) {
+       let toSend = this.uploadWhich(tourId, data, images)
         return this.http.patch(`${this.url}/${tourId}`, toSend, this.getToken())
     }
     deleteTour(tourId: string) {

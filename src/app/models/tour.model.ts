@@ -5,8 +5,6 @@ export class Tour {
     difficulty: String
     price: Number
     summary: String
-    images: [String]
-    imageCover: String
 
     constructor(details: any) {
         this.name = details.name || ''
@@ -15,7 +13,5 @@ export class Tour {
         this.difficulty = details.difficulty || ''
         this.price = details.price || ''
         this.summary = details.summary || ''
-        this.imageCover = details.imageCover || ''
-        this.images = details.images || ''
     }
 }

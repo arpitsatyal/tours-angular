@@ -10,7 +10,9 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { GetToursComponent } from './get-tours/get-tours.component';
 import { SearchTourComponent } from './search-tour/search-tour.component';
-import {MatPaginatorModule} from '@angular/material/paginator'
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { GetReviewsComponent } from './reviews/get-reviews/get-reviews.component';
+import { CreateReviewComponent } from './reviews/create-review/create-review.component'
 
 @NgModule({
     declarations: [
@@ -21,7 +23,9 @@ import {MatPaginatorModule} from '@angular/material/paginator'
         WelcomeComponent,
         HeaderComponent,
         FooterComponent,
-        SearchTourComponent
+        SearchTourComponent,
+        GetReviewsComponent,
+        CreateReviewComponent
     ],
     imports: [
         CommonModule,
