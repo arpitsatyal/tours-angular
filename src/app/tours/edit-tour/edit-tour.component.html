@@ -13,6 +13,9 @@
 
     <label for="summary">summary</label>
     <input class="form-control" type="text" placeholder="{{oldTour.summary}}" name="summary" [(ngModel)]="tour.summary">
+    
+    <label for="startDate">startDate</label>
+    <input class="form-control" type="date" placeholder="startDate" name="startDate" [(ngModel)]="tour.startDate" required>
 
     <label for="difficulty">difficulty</label> <br>
     <input type="radio" name="difficulty" value="easy" [(ngModel)]="tour.difficulty">

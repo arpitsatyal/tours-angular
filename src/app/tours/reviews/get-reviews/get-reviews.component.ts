@@ -24,9 +24,6 @@ export class GetReviewsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.reviewsService.getReview(this.tourId).subscribe((res: any) => {
-        this.reviews = res.reviews
-      }, 
-      err => this.notify.showError(err))
+      this.reviewsService.getReview(this.tourId).subscribe((res: any) => this.reviews = res.reviews, err => this.notify.showError(err))
   }
 }

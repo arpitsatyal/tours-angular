@@ -16,7 +16,12 @@ export class UsersService extends BaseService {
     }
 
     updateUser(id:string, data: User, image) {
-        let toSend = this.uploadService.uploadWithImage(id, data, image, 'profilePic')
+        let toSend
+        if(image) {
+        toSend = this.uploadService.uploadWithImage(id, data, image, 'profilePic')
+        } else {
+            toSend = data
+        }
         return this.http.patch(`${this.url}/${id}`, toSend, this.getToken())
     }
     updatePassword(data: User) {

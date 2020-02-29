@@ -11,12 +11,12 @@ import { environment } from 'src/environments/environment';
 })
 export class ToursDetailsComponent implements OnInit {
   tour
-  tourFirstName
-  tourLastName
+
   AllImages = []
   selectedFiles = null
   submitting = false
   imageUrl
+  startDate
   public user = JSON.parse(localStorage.getItem('user'))
   constructor(
     public toursService: ToursService,
@@ -29,9 +29,7 @@ export class ToursDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.toursService.getTour(this.activatedRoute.snapshot.params.id)
       .subscribe((result: any) => {
-        this.tour = result.tour
-        this.tourFirstName = `${result.tour.name.split(' ')[0]} ${result.tour.name.split(' ')[1]}`
-        this.tourLastName = result.tour.name.split(' ')[2]
+        this.tour = result.tour        
       }, err => this.notify.showError(err))
   }
 

@@ -5,7 +5,7 @@ import { Review } from '../models/review.model';
 
 @Injectable()
 
-export class ReviewService extends BaseService{
+export class ReviewService extends BaseService {
     url
     constructor(public http: HttpClient) {
         super('tours')

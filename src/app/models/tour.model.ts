@@ -5,6 +5,7 @@ export class Tour {
     difficulty: String
     price: Number
     summary: String
+    startDate: Date
 
     constructor(details: any) {
         this.name = details.name || ''
@@ -13,5 +14,6 @@ export class Tour {
         this.difficulty = details.difficulty || ''
         this.price = details.price || ''
         this.summary = details.summary || ''
+        this.startDate = details.startDate || ''
     }
 }

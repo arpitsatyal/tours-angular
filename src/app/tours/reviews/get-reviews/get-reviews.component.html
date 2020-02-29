@@ -9,7 +9,7 @@
             alt=""
             class="reviews__avatar-img"
           />
-          <h6 class="reviews__user">{{user.username}}</h6>
+          <h2 class="reviews__user">{{user.username}}</h2>
         </div>
         <p class="reviews__text">
          {{rev.name}} 
@@ -22,6 +22,7 @@
             <use xlink:href="./../../../assets/img/icons.svg#icon-star" ></use>
           </svg> 
         </div>
+        <button class="btn btn-primary" *ngIf="rev.writer.username === user.username">edit your review</button>
       </div>
     </div>
   </section>

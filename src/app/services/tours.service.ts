@@ -19,11 +19,12 @@ export class ToursService extends BaseService {
         let toUpload
         if (images.length > 1) {
             toUpload = this.uploadService.uploadWithImage(id, data, images, 'images')
-        } else {
+        }
+        else {
             toUpload = this.uploadService.uploadWithImage(id, data, images, 'imageCover')
         }
         return toUpload
-    }
+}
 
     getTours(limit: number, page: number) {
         let queryParams = `?page=${page}&limit=${limit}`
@@ -36,12 +37,22 @@ export class ToursService extends BaseService {
 
     postTour(data: Tour, images) {
         let id = undefined
-        let toSend = this.uploadWhich(id, data, images)
+        let toSend
+        if(images) {
+        toSend = this.uploadWhich(id, data, images)
+        } else {
+            toSend = data
+        }
         return this.http.post(this.url, toSend, this.getToken())
     }
 
     updateTour(tourId: string, data: Tour, images) {
-       let toSend = this.uploadWhich(tourId, data, images)
+        let toSend
+        if(images) {
+        toSend = this.uploadWhich(tourId, data, images) 
+        } else {
+            toSend = data
+        }
         return this.http.patch(`${this.url}/${tourId}`, toSend, this.getToken())
     }
     deleteTour(tourId: string) {
