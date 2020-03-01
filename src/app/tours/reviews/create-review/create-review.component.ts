@@ -13,6 +13,7 @@ export class CreateReviewComponent implements OnInit {
   submitting = false
   review
   tourId
+  reviewId
   constructor(
     public notify: notifyService,
     public reviewService: ReviewService,
@@ -21,6 +22,7 @@ export class CreateReviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.tourId = this.activatedRoute.snapshot.params.tourId
+    this.reviewId = this.activatedRoute.snapshot.params.reviewId
     this.review = new Review({})
   }
   createRev(rev) {
@@ -34,4 +36,17 @@ export class CreateReviewComponent implements OnInit {
       this.submitting = false
     })
   } 
+
+  editRev(rev) {
+    this.submitting = true
+    this.reviewService.editReview(this.tourId,this.reviewId, rev)
+    .subscribe(() => {
+      this.notify.showSuccess('review edited!')
+      this.submitting = false
+    }, err => {
+      this.notify.showError(err)
+      this.submitting = false
+    })
+  } 
+  
 }

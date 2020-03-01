@@ -26,4 +26,8 @@ export class GetReviewsComponent implements OnInit {
   ngOnInit(): void {
       this.reviewsService.getReview(this.tourId).subscribe((res: any) => this.reviews = res.reviews, err => this.notify.showError(err))
   }
+  deleteReview(tourId, reviewId) {
+    this.reviews.splice(reviewId, 1)
+    this.reviewsService.deleteReview(tourId, reviewId).subscribe(() => this.notify.showInfo('review deleted!'), err => this.notify.showError(err))
+  }
 }

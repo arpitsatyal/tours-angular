@@ -12,7 +12,7 @@ import { GetToursComponent } from './get-tours/get-tours.component';
 import { SearchTourComponent } from './search-tour/search-tour.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { GetReviewsComponent } from './reviews/get-reviews/get-reviews.component';
-import { CreateReviewComponent } from './reviews/create-review/create-review.component'
+import { CreateReviewComponent } from './reviews/create-review/create-review.component';
 
 @NgModule({
     declarations: [

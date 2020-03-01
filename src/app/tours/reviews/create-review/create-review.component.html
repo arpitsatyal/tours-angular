@@ -1,6 +1,7 @@
 <main class="main">
     <div class="login-form">
-        <h2 class="heading-secondary ma-bt-lg">create review</h2>
+        <h2 class="heading-secondary ma-bt-lg" *ngIf="!reviewId">create review</h2>
+        <h2 class="heading-secondary ma-bt-lg" *ngIf="reviewId">edit review</h2>
 
         <form class="form" #formInput="ngForm" novalidate>
             <div class="form__group">
@@ -14,7 +15,8 @@
 
 
             <div class="form__group">
-                <button class="btn btn--green" (click) ="createRev(review)" [disabled]="formInput.invalid" [hidden]="submitting">submit</button>
+                <button class="btn btn--green" *ngIf="!reviewId" (click) ="createRev(review)" [disabled]="formInput.invalid" [hidden]="submitting">submit</button>
+                <button class="btn btn--green" *ngIf="reviewId" (click) ="editRev(review)" [disabled]="formInput.invalid" [hidden]="submitting">submit</button>
                 <button class="btn btn--green" [hidden]="!submitting">submitting...</button></div>
         </form>
     </div>

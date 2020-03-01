@@ -1,15 +1,15 @@
 <section class="section-reviews">
-  <a routerLink="/tours/{{tourId}}/reviews/createReview" class="btn btn-primary" style="float: center;">create review</a>
+  <a routerLink="/tours/{{tourId}}/reviews/createReview" class="btn btn-primary">create review</a>
 
     <div class="reviews">
       <div class="reviews__card" *ngFor="let rev of reviews">
         <div class="reviews__avatar">
           <img
-            src="{{imagePath}}/{{user.profilePic}}"
+            src="{{imagePath}}/{{rev.writer.profilePic}}"
             alt=""
             class="reviews__avatar-img"
           />
-          <h2 class="reviews__user">{{user.username}}</h2>
+          <h2 class="reviews__user">{{rev.writer.username}}</h2>
         </div>
         <p class="reviews__text">
          {{rev.name}} 
@@ -22,7 +22,9 @@
             <use xlink:href="./../../../assets/img/icons.svg#icon-star" ></use>
           </svg> 
         </div>
-        <button class="btn btn-primary" *ngIf="rev.writer.username === user.username">edit your review</button>
+        <br>
+        <a  routerLink="/tours/{{tourId}}/reviews/createReview/{{rev._id}}" class="btn btn--green btn--small" *ngIf="rev.writer.username === user.username">edit your review</a>
+        <button class="btn btn--red btn--small" (click)="deleteReview(rev.tour._id, rev._id)" *ngIf="rev.writer.username === user.username">delete your review</button>
       </div>
     </div>
   </section>

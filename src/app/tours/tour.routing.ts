@@ -13,7 +13,8 @@ const routes: Routes = [
     { path: 'editTour/:id', component: EditTourComponent },
     {path: 'tourDetails/:id', component: ToursDetailsComponent},
     {path: 'searchTours', component: SearchTourComponent},
-    {path: ':tourId/reviews/createReview', component: CreateReviewComponent}
+    {path: ':tourId/reviews/createReview', component: CreateReviewComponent},
+    {path: ':tourId/reviews/createReview/:reviewId', component: CreateReviewComponent}
 ]
 
 @NgModule({
