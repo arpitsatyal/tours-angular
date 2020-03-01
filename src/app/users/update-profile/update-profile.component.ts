@@ -26,7 +26,6 @@ export class  UpdateProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.toUpdate = new User({})
-    this.toUpdate.profilePic = this.user.profilePic
   }
   onFileSelected(e) {
     this.selectedFile = <File> e.target.files[0]

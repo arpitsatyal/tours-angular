@@ -1,6 +1,3 @@
-  <div class="user-view__content">
-    
-        <div class="user-view__form-container">
             <h2 class="heading-secondary ma-bt-md">Your account settings</h2>
             <form class="form form-user-data">
                 <div class="form__group"><label class="form__label" for="name">Name</label>
@@ -10,9 +7,8 @@
                 <div class="form__group form__photo-upload">
                     <img class="form__user-photo" src="{{imagePath}}/{{toUpdate.profilePic}}" alt="User photo" />
                     <input type="file" (change)="onFileSelected($event)"></div>
-                <div class="form__group right">
+                <div class="form__group center">
                     <button class="btn btn--small btn--green" (click)="updateMe()">Save settings</button></div>
             </form>
+            <br> <br>
     <a routerLink="/users/me/{{user._id}}" class="btn btn-info">go back</a>
-        </div>
-    </div>

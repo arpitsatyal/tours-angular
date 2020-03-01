@@ -44,9 +44,9 @@ export class ToursDetailsComponent implements OnInit {
     this.submitting = true
     this.toursService.updateTour(this.activatedRoute.snapshot.params.id, this.tour, this.AllImages)
       .subscribe((res: any) => {
+        this.submitting = false
         this.tour.images = res.tour.images
         this.notify.showSuccess('all files uploaded!')
-        this.submitting = false
       }, err => {
         this.notify.showError(err)
         this.submitting = false

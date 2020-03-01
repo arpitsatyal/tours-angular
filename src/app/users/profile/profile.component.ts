@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
   user = JSON.parse(localStorage.getItem('user'))
+  imagePath
   constructor() { }
 
   ngOnInit(): void {
+    this.imagePath = environment.imageUrl + '/users'
+
   }
 
 }

@@ -17,8 +17,10 @@ export class GetToursComponent implements OnInit {
   total = 0
   limit = 6
   imagePath
+  oldPage
   pageSizeOptions = [1,2,3,4]
   user = JSON.parse(localStorage.getItem('user'))
+ 
   @Input() inputData: any
   @Output() searchagain = new EventEmitter()
   constructor(
@@ -28,7 +30,6 @@ export class GetToursComponent implements OnInit {
 
     ) { 
     this.imagePath = environment.imageUrl + '/tours'
-
     }
 
   ngOnInit(): void {
@@ -58,5 +59,6 @@ export class GetToursComponent implements OnInit {
       this.allTours = res.tours
     }, err => this.notify.showError(err))
   }
+ 
 }
  

@@ -1,5 +1,4 @@
 <div class="user-view">
-  <div class="user-view__content">
 <nav class="user-view__menu">
     <ul class="side-nav">
         <li class="side-nav--active"><a routerLink="/users/updateMe/{{user._id}}"><svg>
@@ -28,8 +27,23 @@
                         <use xlink:href="./../../../assets/img/icons.svg#icon-star"></use>
                     </svg>Manage reviews</a></li>
         </ul>
-    </div>
-</nav>
-<!-- profile code here -->
+    </div> <br> 
 <a routerLink="/tours/getTours" class="btn btn-primary">go back</a>
-  </div></div>
+
+</nav>
+<div class="user-view__content">
+
+<!-- profile code here -->
+<h1>User Details</h1>
+<div class="card">
+    <img src="{{imagePath}}/{{user.profilePic}}" alt="Avatar" style="width:50%">
+    <div class="container">
+      <h4><b>Name: {{user.username}}</b></h4>
+      <h4><b>Email: {{user.email}}</b></h4>
+      <h4><b>Role: {{user.role}}</b></h4>      
+    </div>
+  </div>
+
+</div>
+
+
