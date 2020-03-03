@@ -4,7 +4,9 @@
         <form class="form" #formInput="ngForm" novalidate>
             <div class="form__group">
                 <label class="form__label" for="email">username</label>
-                <input class="form__input" name="username" required [(ngModel)]="user.username" placeholder="username"></div>
+                <input class="form__input" name="username" (focusout)="checkUsername(user.username)" required  
+              [(ngModel)]="user.username" placeholder="username"></div>
+
                 <div class="form__group ma-bt-md">
                     <label class="form__label" for="password">Password</label>
                     <input class="form__input"  type="password" name="password" placeholder="password"
@@ -13,6 +15,7 @@
                         <div *ngIf="pass.errors.required">required field...</div>
                         <div *ngIf="pass.errors.minlength">password too short...</div>
                     </div>
+
             <div class="form__group ma-bt-md">
                 <div class="form__group">
                     <label class="form__label" for="email">email</label>

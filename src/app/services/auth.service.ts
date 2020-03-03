@@ -23,4 +23,7 @@ export class AuthService extends BaseService {
   resetPassword(token, data: User) {
     return this.http.patch(`${this.url}/resetPassword/${token}`, data, this.getOptions())
   }
+  checkUsername(username: User) {
+    return this.http.get(`${this.url}/checkUsername/${username}`, this.getOptions())
+  }
 }

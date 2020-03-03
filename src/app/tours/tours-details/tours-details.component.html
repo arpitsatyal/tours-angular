@@ -37,49 +37,31 @@
             </div>
           </div>
 
-          <div class="overview-box__group">
+          <div class="overview-box__group" *ngIf="tour.guides.length">
             <h2 class="heading-secondary ma-bt-lg">Your tour guides</h2>
 
-            <div class="overview-box__detail">
+            <div class="overview-box__detail" *ngFor="let guide of tour.guides">
               <img
-                src="./../../../assets/img/users/user-19.jpg"
+                src="{{userUrl}}/{{guide.profilePic}}"
                 alt="Lead guide"
                 class="overview-box__img"
               />
-              <span class="overview-box__label">Lead guide</span>
-              <span class="overview-box__text">Steven Miller</span>
-            </div>
-            <div class="overview-box__detail">
-              <img
-                src="./../../../assets/img/users/user-18.jpg"
-                alt="Tour guide"
-                class="overview-box__img"
-              />
-              <span class="overview-box__label">Tour guide</span>
-              <span class="overview-box__text">Lisa Brown</span>
-            </div>
-            <div class="overview-box__detail">
-              <img
-                src="./../../../assets/img/users/user-17.jpg"
-                alt="Intern"
-                class="overview-box__img"
-              />
-              <span class="overview-box__label">Intern</span>
-              <span class="overview-box__text">Max Smith</span>
+              <span class="overview-box__label">{{guide.role}}</span>
+              <span class="overview-box__text">{{guide.username}}</span>
             </div>
           </div>
         </div>
       </div>
 
       <div class="description-box">
-        <h2 class="heading-secondary ma-bt-lg"> {{tour.name}}</h2>
+        <h2 class="heading-secondary ma-bt-lg">About {{tour.name}}:</h2>
         <p class="description__text">
           {{tour.summary}}
         </p>
       </div>
     </section>
   
-      <form *ngIf="!tour.images.length">
+      <form *ngIf="!tour.images.length && user.role === 'admin'">
         <label for="files">Select files:</label>
         <input type="file" (change)="onFilesSelected($event)" multiple ><br><br>
         <button class="btn btn-primary" (click)="uploadMultiple()" [hidden]="submitting">upload files</button>

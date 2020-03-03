@@ -16,6 +16,7 @@ export class ToursDetailsComponent implements OnInit {
   selectedFiles = null
   submitting = false
   imageUrl
+  userUrl
   startDate
   public user = JSON.parse(localStorage.getItem('user'))
   constructor(
@@ -24,6 +25,7 @@ export class ToursDetailsComponent implements OnInit {
     public notify: notifyService
   ) {
     this.imageUrl = environment.imageUrl + '/tours'
+    this.userUrl = environment.imageUrl + '/users'
   }
 
   ngOnInit(): void {
