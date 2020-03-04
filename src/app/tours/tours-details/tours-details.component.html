@@ -73,18 +73,26 @@
       <img 
         class="picture-box__img picture-box__img--1"
         src="{{imageUrl}}/{{i}}"
-        alt="The Park Camper Tour 1" 
+        alt="{{tour.name}}" 
       >
-    </div>
-    
+    </div> 
+    <div class="picture-box" *ngIf="user.role !== 'admin'">
+      <img 
+        class="picture-box__img picture-box__img--1"
+        src="{{imageUrl}}/{{tour.imageCover}}"
+        alt="a" 
+      >
+    </div> 
+       
     <form *ngIf="user.role === 'admin'">
       <label for="files">Select files:</label>
       <input type="file" (change)="onFilesSelected($event)" multiple ><br><br>
       <button class="btn btn-primary" (click)="uploadMultiple()" [hidden]="submitting">upload files</button>
       <button class="btn btn-info"  [hidden]="!submitting">uploading...</button>
     </form>
-    </section> 
-
+  </section>
+ 
+  
     <app-get-reviews [user]="user"></app-get-reviews>
    
     <section class="section-cta">

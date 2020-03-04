@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { notifyService } from 'src/app/services/toastr.service';
 import { ToursService } from 'src/app/services/tours.service';
@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   public pathForUser = environment.imageUrl + '/users'
   pathForTours = environment.imageUrl + '/tours'
   matchedTour: any
-  @Input() getFromView
+  allTours
   @Output() giveToChild = new EventEmitter()
   loggedInUser = JSON.parse(localStorage.getItem('user'))
   
@@ -22,6 +22,10 @@ constructor(public router: Router,
 ) {}
  
 ngOnInit(): void {
+  this.toursService.getTours()
+      .subscribe((data: any) => {
+        this.allTours = data.tours
+        }, err => this.notify.showError(err))
 }
 
 logout() {
@@ -30,7 +34,7 @@ logout() {
 }
 
 getData(ev) {
-  this.getFromView.forEach(tour => {
+  this.allTours.forEach(tour => {
     var splitted = tour.name.split(' ')
     let name
     if (splitted.length === 1) {
@@ -49,7 +53,7 @@ getData(ev) {
 }
 
 deleteTour(tourId) {
-  this.getFromView.splice(tourId, 1)
+  this.allTours.splice(tourId, 1)
   this.toursService.deleteTour(tourId).subscribe(() => this.notify.showInfo('tour deleted!'),
     err => this.notify.showError(err))
 }

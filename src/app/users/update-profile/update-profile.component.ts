@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { notifyService } from 'src/app/services/toastr.service';
 import { environment } from 'src/environments/environment';
-
 
 @Component({
   selector: 'app-update-profile',
@@ -19,7 +18,8 @@ export class  UpdateProfileComponent implements OnInit {
   constructor(
     public usersService: UsersService,
     public activatedRoute: ActivatedRoute,
-    public notify: notifyService
+    public notify: notifyService,
+    public router: Router
   ) { 
     this.imagePath = environment.imageUrl + '/users'
   }
@@ -29,7 +29,6 @@ export class  UpdateProfileComponent implements OnInit {
   }
   onFileSelected(e) {
     this.selectedFile = <File> e.target.files[0]
-    console.log(this.selectedFile)
   }
   updateMe() {
     let id = this.activatedRoute.snapshot.params.id
@@ -40,4 +39,15 @@ export class  UpdateProfileComponent implements OnInit {
       this.notify.showSuccess('account updated')
     }, err => this.notify.showError(err))
   }
+  deleteMe(id) {
+    let confirmation = confirm('are you sure?')
+      if(confirmation) {
+    this.usersService.deleteAccount(id).subscribe(() => {
+   this.notify.showInfo('account deleted')
+   localStorage.clear()
+   this.router.navigate([''])
+    },
+    err => this.notify.showError(err))
+  }
+}
 }

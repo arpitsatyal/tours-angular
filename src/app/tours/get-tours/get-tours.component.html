@@ -1,4 +1,4 @@
-  <app-header (giveToChild)="msg=$event" [getFromView]="allTours"></app-header>
+  <app-header (giveToChild)="msg=$event"></app-header>
   <button class="btn btn-success" *ngIf="inputData" (click)="searchAgain()">search again</button>
     <section class="overview">
     <main class="main" *ngIf="!msg">
@@ -28,7 +28,7 @@
               <svg class="card__icon">
                 <use xlink:href="./../../../assets/img/icons.svg#icon-map-pin"></use>
               </svg>
-              <span>{{tour.location}}</span>
+              <span>{{tour.location | lowercase }}</span>
             </div>
             <div class="card__data">
               <svg class="card__icon">
@@ -42,6 +42,7 @@
               </svg>
               <span>3 stops</span>
             </div>
+
             <div class="card__data">
               <svg class="card__icon">
                 <use xlink:href="./../../../assets/img/icons.svg#icon-user"></use>

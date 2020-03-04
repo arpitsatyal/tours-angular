@@ -26,7 +26,7 @@ export class ToursService extends BaseService {
         return toUpload
 }
 
-    getTours(limit: number, page: number) {
+    getTours(limit?: number, page?: number) {
         let queryParams = `?page=${page}&limit=${limit}`
         return this.http.get(this.url + queryParams, this.getOptionsWithToken())
     }

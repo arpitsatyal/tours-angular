@@ -11,13 +11,12 @@ import { environment } from 'src/environments/environment';
 })
 export class ToursDetailsComponent implements OnInit {
   tour
-
   AllImages = []
   selectedFiles = null
   submitting = false
   imageUrl
   userUrl
-  startDate
+  
   public user = JSON.parse(localStorage.getItem('user'))
   constructor(
     public toursService: ToursService,

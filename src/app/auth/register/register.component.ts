@@ -11,6 +11,7 @@ import { notifyService } from 'src/app/services/toastr.service';
 export class RegisterComponent implements OnInit {
   submitting = false
   user
+  check = false
   constructor(
     public authService: AuthService,
     public notify: notifyService
@@ -33,6 +34,7 @@ export class RegisterComponent implements OnInit {
   }
   checkUsername(name) {
     this.authService.checkUsername(name).subscribe((res: any) =>{
+      this.check = true
    this.notify.showInfo(`username ${res.username} already exists`)
   })
   }

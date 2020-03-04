@@ -27,4 +27,7 @@ export class UsersService extends BaseService {
     updatePassword(data: User) {
         return this.http.patch(`${this.url}/changePassword`, data, this.getOptionsWithToken())
     }
+    deleteAccount(id) {
+        return this.http.delete(`${this.url}/${id}`, this.getOptionsWithToken())
+    }
 }

@@ -26,7 +26,7 @@
                     </div>
               
             <div class="form__group">
-                <button class="btn btn--green" (click) ="register($event)" [disabled]="formInput.invalid" [hidden]="submitting">register</button></div>
+                <button class="btn btn--green" (click) ="register($event)" [disabled]="formInput.invalid || check" [hidden]="submitting">register</button></div>
                 <button class="btn btn--green" [hidden]="!submitting">registering...</button></div>
         </form>
     </div>

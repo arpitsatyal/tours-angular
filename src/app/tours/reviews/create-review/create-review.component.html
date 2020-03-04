@@ -3,20 +3,20 @@
         <h2 class="heading-secondary ma-bt-lg" *ngIf="!reviewId">create review</h2>
         <h2 class="heading-secondary ma-bt-lg" *ngIf="reviewId">edit review</h2>
 
-        <form class="form" #formInput="ngForm" novalidate>
+        <form class="form" novalidate>
             <div class="form__group">
                 <label class="form__label">review</label>
-                <input class="form__input" name="name" required [(ngModel)]="review.name" placeholder="review"></div>
+                <input class="form__input" name="name" [(ngModel)]="review.name" placeholder="review"></div>
 
                 <div class="form__group ma-bt-md">
                     <label class="form__label">rating</label>
                     <input class="form__input"  type="number" name="rating" placeholder="rating"
-                    [(ngModel)]="review.rating" required ></div>
+                    [(ngModel)]="review.rating" ></div>
 
 
             <div class="form__group">
-                <button class="btn btn--green" *ngIf="!reviewId" (click) ="createRev(review)" [disabled]="formInput.invalid" [hidden]="submitting">submit</button>
-                <button class="btn btn--green" *ngIf="reviewId" (click) ="editRev(review)" [disabled]="formInput.invalid" [hidden]="submitting">submit</button>
+                <button class="btn btn--green" *ngIf="!reviewId" (click) ="createRev(review)" [hidden]="submitting">submit</button>
+                <button class="btn btn--green" *ngIf="reviewId" (click) ="editRev(review)" [hidden]="submitting">submit</button>
                 <button class="btn btn--green" [hidden]="!submitting">submitting...</button></div>
         </form>
     </div>
