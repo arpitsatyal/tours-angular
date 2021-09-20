@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:8080/api',
-  imageUrl: 'http://localhost:8080/uploads'
+  baseUrl: 'https://toursandmore.herokuapp.com/api',
+  imageUrl: 'https://toursandmore.herokuapp.com/uploads'
 };
 
 /*
