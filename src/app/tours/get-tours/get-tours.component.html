@@ -1,14 +1,14 @@
-  <app-header (giveToChild)="msg=$event"></app-header>
+  <app-header (giveToChild)="getMatchedTour=$event"></app-header>
   <button class="btn btn-success" *ngIf="inputData" (click)="searchAgain()">search again</button>
-    <section class="overview">
-    <main class="main" *ngIf="!msg">
+  <div *ngIf="!matchedTour.length">
+    <main class="main">
       <div class="card-container">
         <div class="card" *ngFor="let tour of allTours">
           <div class="card__header">
             <div class="card__picture">
               <div class="card__picture-overlay">&nbsp;</div>
               <img
-              src="{{imagePath}}/{{tour.imageCover}}"
+              src="https://res.cloudinary.com/arpit7xx/image/upload/v{{tour.imgVersion}}/{{tour.imgId}}"
               alt="Tour 1"
               class="card__picture-img"
             />
@@ -28,19 +28,19 @@
               <svg class="card__icon">
                 <use xlink:href="./../../../assets/img/icons.svg#icon-map-pin"></use>
               </svg>
-              <span>{{tour.location | lowercase }}</span>
+              <span>{{tour.startLocation.description | lowercase }}</span>
             </div>
             <div class="card__data">
               <svg class="card__icon">
                 <use xlink:href="./../../../assets/img/icons.svg#icon-calendar"></use>
               </svg>
-              <span>{{tour.startDate | date: 'dd/MM/yyyy'}}</span>
+              <span>{{tour.startDates[0] | date: 'dd/MM/yyyy'}}</span>
             </div>
             <div class="card__data">
               <svg class="card__icon">
                 <use xlink:href="./../../../assets/img/icons.svg#icon-flag"></use>
               </svg>
-              <span>3 stops</span>
+              <span>{{ tour.locations.length }} stops</span>
             </div>
 
             <div class="card__data">
@@ -61,12 +61,12 @@
               <span class="card__footer-text">rating ({{tour.ratingsQuantity}})</span>
             </p>
             <a routerLink="/tours/tourDetails/{{tour._id}}" class="btn btn--green btn--small">Details</a>
-            <a routerLink="/tours/editTour/{{tour._id}}" class="btn btn-primary btn-sm" *ngIf="user.role === 'admin'" >Edit Tour</a>
-            <button class="btn btn-danger" *ngIf="user.role === 'admin'" (click)="deleteTour(tour._id)">delete tour </button>
+            <a routerLink="/tours/editTour/{{tour._id}}" class="btn btn-primary btn-sm" *ngIf="user" >Edit Tour</a>
+            <button class="btn btn-danger" *ngIf="user" (click)="deleteTour(tour._id)">delete tour </button>
           </div>
         </div>
       </div>
     </main>
-    </section>
     <mat-paginator  *ngIf="!inputData" [length]="total" [pageSize]="limit" [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)"></mat-paginator>
     <app-footer></app-footer>
+  </div>

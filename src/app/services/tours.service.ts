@@ -9,56 +9,33 @@ import { UploadService } from './uploadService'
 export class ToursService extends BaseService {
     url
     constructor(
-        public http: HttpClient,
-        public uploadService: UploadService
-    ) {
+        public http: HttpClient
+            ) {
         super('tours')
     }
 
-    uploadWhich(id, data, images) {
-        let toUpload
-        if (images.length > 1) {
-            toUpload = this.uploadService.uploadWithImage(id, data, images, 'images')
-        }
-        else {
-            toUpload = this.uploadService.uploadWithImage(id, data, images, 'imageCover')
-        }
-        return toUpload
-}
-
     getTours(limit?: number, page?: number) {
         let queryParams = `?page=${page}&limit=${limit}`
-        return this.http.get(this.url + queryParams, this.getOptionsWithToken())
+        return this.http.get(this.url + queryParams, this.getOptions())
     }
 
     getTour(tourId: string) {
-        return this.http.get(`${this.url}/${tourId}`, this.getOptionsWithToken())
+        return this.http.get(`${this.url}/${tourId}`, this.getOptions())
     }
 
-    postTour(data: Tour, images) {
-        let id = undefined
-        let toSend
-        if(images) {
-        toSend = this.uploadWhich(id, data, images)
-        } else {
-            toSend = data
-        }
-        return this.http.post(this.url, toSend, this.getToken())
+    postTour(data: Tour) {
+        return this.http.post(this.url, data, this.getOptionsWithToken())
     }
 
-    updateTour(tourId: string, data: Tour, images) {
-        let toSend
-        if(images) {
-        toSend = this.uploadWhich(tourId, data, images) 
-        } else {
-            toSend = data
-        }
-        return this.http.patch(`${this.url}/${tourId}`, toSend, this.getToken())
+    updateTour(tourId: string, body) {     
+        return this.http.patch(`${this.url}/${tourId}`,body, this.getOptionsWithToken())
     }
+    
     deleteTour(tourId: string) {
         return this.http.delete(`${this.url}/${tourId}`, this.getOptionsWithToken())
     }
+
     searchTours(data: Tour) {
-        return this.http.post(`${this.url}/search`, data, this.getOptionsWithToken())
+        return this.http.post(`${this.url}/search`, data, this.getOptions())
     }
 }

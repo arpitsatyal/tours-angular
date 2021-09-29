@@ -5,7 +5,7 @@
                 <div class="form__group ma-bt-md"><label class="form__label" for="email">Email address</label>
                     <input class="form__input" name="email" type="email" [(ngModel)]="toUpdate.email"></div>
                 <div class="form__group form__photo-upload">
-                    <img class="form__user-photo" src="{{imagePath}}/{{user.profilePic}}" alt="User photo" />
+                    <img class="form__user-photo" src="https://res.cloudinary.com/arpit7xx/image/upload/v{{user.imgVersion}}/{{user.imgId}}" alt="User photo" />
                     <input type="file" (change)="onFileSelected($event)"></div>
                 <div class="form__group center">
                     <button class="btn btn--small btn--green" (click)="updateMe()">Save settings</button></div>

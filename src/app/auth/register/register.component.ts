@@ -32,10 +32,10 @@ export class RegisterComponent implements OnInit {
         this.submitting = false
       })
   }
-  checkUsername(name) {
-    this.authService.checkUsername(name).subscribe((res: any) =>{
-      this.check = true
-   this.notify.showInfo(`username ${res.username} already exists`)
-  })
-  }
+  // checkUsername(name) {
+  //   this.authService.checkUsername(name).subscribe((res: any) =>{
+  //     this.check = true
+  //  this.notify.showInfo(`username ${res.username} already exists`)
+  // })
+  // }
 }

@@ -11,7 +11,7 @@ export class ReviewService extends BaseService {
         super('tours')
     }
     getReview(tourId) {
-        return this.http.get(`${this.url}/${tourId}/reviews`, this.getOptionsWithToken())
+        return this.http.get(`${this.url}/${tourId}/reviews`, this.getOptions())
     }
     createReview(tourId, rev: Review) {
         return this.http.post(`${this.url}/${tourId}/reviews`, rev, this.getOptionsWithToken())
@@ -22,6 +22,4 @@ export class ReviewService extends BaseService {
     deleteReview(tourId, id) {
         return this.http.delete(`${this.url}/${tourId}/reviews/${id}`, this.getOptionsWithToken())
     }
-    
-    
 }

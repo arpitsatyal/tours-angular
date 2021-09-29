@@ -1,11 +1,14 @@
 export class Tour {
+    _id: number | string
     name: string
     maxGroupSize: Number
     duration: Number
     difficulty: String
     price: Number
     summary: String
-    startDate: Date
+    startDate: Array<Date>
+    startLocation: Object
+    locations: Object
 
     constructor(details: any) {
         this.name = details.name || ''
@@ -15,5 +18,11 @@ export class Tour {
         this.price = details.price || ''
         this.summary = details.summary || ''
         this.startDate = details.startDate || ''
+       this.startLocation = {
+           x: details.startLocation
+       } 
+       this.locations =  {
+               y: details.locations
+           } 
     }
 }

@@ -4,39 +4,22 @@
         <li class="side-nav--active"><a routerLink="/users/updateMe/{{user._id}}"><svg>
                     <use xlink:href="./../../../assets/img/icons.svg#icon-settings"></use>
                 </svg>Settings</a></li>
-        <li><a routerLink="#"><svg>
-                    <use xlink:href="./../../../assets/img/icons.svg#icon-briefcase"></use>
-                </svg>My bookings</a></li>
-        <li><a routerLink="#"><svg>
+        <!-- <li><a routerLink="/users/myReviews"><svg>
                     <use xlink:href="./../../../assets/img/icons.svg#icon-star"></use>
-                </svg>My reviews</a></li>
+                </svg>My reviews</a></li> -->
         <li><a routerLink="/users/changePassword"><svg>
                     <use xlink:href="./../../../assets/img/icons.svg#icon-credit-card"></use>
                 </svg>Change Password</a></li>
     </ul>
-    <div class="admin-nav" *ngIf="user.role === 'admin'">
-        <h5 class="admin-nav__heading">Admin</h5>
-        <ul class="side-nav">
-            <li><a routerLink="#"><svg>
-                        <use xlink:href="./../../../assets/img/icons.svg#icon-map"></use>
-                    </svg>Manage tours</a></li>
-            <li><a routerLink="#"><svg>
-                        <use xlink:href="./../../../assets/img/icons.svg#icon-users"></use>
-                    </svg>Manage users</a></li>
-            <li><a routerLink="#"><svg>
-                        <use xlink:href="./../../../assets/img/icons.svg#icon-star"></use>
-                    </svg>Manage reviews</a></li>
-        </ul>
-    </div> <br> 
+    
 <a routerLink="/tours/getTours" class="btn btn-primary">go back</a>
-
 </nav>
 <div class="user-view__content">
 
 <!-- profile code here -->
 <h1>User Details</h1>
 <div class="card">
-    <img src="{{imagePath}}/{{user.profilePic}}" alt="Avatar" style="width:50%">
+    <img src="https://res.cloudinary.com/arpit7xx/image/upload/v{{user.imgVersion}}/{{user.imgId}}" alt="Avatar" style="width:50%">
     <div class="container">
       <h4><b>Name: {{user.username}}</b></h4>
       <h4><b>Email: {{user.email}}</b></h4>

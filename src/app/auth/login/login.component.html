@@ -20,6 +20,8 @@
             <div class="form__group">
                 <button class="btn btn--green" (click) ="login($event)" [disabled]="formInput.invalid" [hidden]="submitting">login</button>
                 <button class="btn btn--green" [hidden]="!submitting">loggging in...</button></div>
+    <a routerLink="/auth/forgotPassword" class="nav__el nav__el--cta">forgot password?</a>
+
         </form>
     </div>
 </main>

@@ -11,8 +11,7 @@ import { environment } from 'src/environments/environment';
 })
 export class GetReviewsComponent implements OnInit {
   reviews
-  imagePath
-  @Input() user
+  user = JSON.parse(localStorage.getItem('user'))
   ratings = [1,2,3,4,5]
   tourId = this.activatedRoute.snapshot.params.id
   constructor(
@@ -20,11 +19,13 @@ export class GetReviewsComponent implements OnInit {
     public reviewsService: ReviewService,
     public notify: notifyService
   ) { 
-    this.imagePath = environment.imageUrl + '/users'
   }
 
   ngOnInit(): void {
-      this.reviewsService.getReview(this.tourId).subscribe((res: any) => this.reviews = res.reviews, err => this.notify.showError(err))
+      this.reviewsService.getReview(this.tourId).subscribe((res: any) => {
+        this.reviews = res.reviews
+      }, 
+      err => this.notify.showError(err))
   }
   deleteReview(tourId, reviewId) {
     this.reviews.splice(reviewId, 1)

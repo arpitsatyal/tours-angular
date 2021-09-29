@@ -9,7 +9,7 @@
                 <use xlink:href="./../../../assets/img/icons.svg#icon-calendar"></use>
               </svg>
               <span class="overview-box__label">Start date</span>
-              <span class="overview-box__text">{{tour.startDate | date: 'dd/MM/yyyy'}}</span>
+              <span class="overview-box__text">{{tour.startDates[0] | date: 'dd/MM/yyyy'}}</span>
             </div>
             <div class="overview-box__detail">
               <svg class="overview-box__icon">
@@ -42,7 +42,7 @@
 
             <div class="overview-box__detail" *ngFor="let guide of tour.guides">
               <img
-                src="{{userUrl}}/{{guide.profilePic}}"
+                src=""
                 alt="Lead guide"
                 class="overview-box__img"
               />
@@ -58,57 +58,34 @@
         <p class="description__text">
           {{tour.summary}}
         </p>
+        <h1 class="heading-secondary ma-bt-lg">All the tour locations with co-ordinates:</h1>
+        <table id="t01" *ngIf="tour.locations">
+          <tr>
+             <th>Location</th>
+             <th>Co-ordinates</th>
+          </tr>
+          <tr *ngFor="let location of tour.locations">
+            <td>{{location.description}}</td> 
+            <td>{{location.coordinates}}</td>
+          </tr>
+       </table>
       </div>
     </section>
   
-      <form *ngIf="!tour.images.length && user.role === 'admin'">
-        <label for="files">Select files:</label>
-        <input type="file" (change)="onFilesSelected($event)" multiple ><br><br>
-        <button class="btn btn-primary" (click)="uploadMultiple()" [hidden]="submitting">upload files</button>
-        <button class="btn btn-info"  [hidden]="!submitting">uploading...</button>
-      </form>
-
-        <section class="section-pictures" *ngIf="tour.images.length">
-    <div class="picture-box" *ngFor="let i of tour.images">
-      <img 
-        class="picture-box__img picture-box__img--1"
-        src="{{imageUrl}}/{{i}}"
-        alt="{{tour.name}}" 
-      >
-    </div> 
-    <div class="picture-box" *ngIf="user.role !== 'admin'">
-      <img 
-        class="picture-box__img picture-box__img--1"
-        src="{{imageUrl}}/{{tour.imageCover}}"
-        alt="a" 
-      >
-    </div> 
-       
-    <form *ngIf="user.role === 'admin'">
-      <label for="files">Select files:</label>
-      <input type="file" (change)="onFilesSelected($event)" multiple ><br><br>
-      <button class="btn btn-primary" (click)="uploadMultiple()" [hidden]="submitting">upload files</button>
-      <button class="btn btn-info"  [hidden]="!submitting">uploading...</button>
-    </form>
-  </section>
- 
-  
-    <app-get-reviews [user]="user"></app-get-reviews>
+    <app-get-reviews></app-get-reviews>
    
     <section class="section-cta">
       <div class="cta">
         <div class="cta__img cta__img--logo">
-          <img src="./../../../assets/img/logo-white.png" alt="Natours logo" class="" />
+          <img src="https://res.cloudinary.com/arpit7xx/image/upload/v1632915858/logo-green_usahlj.png" alt="Natours logo" class="" />
         </div>
-        <img src="./../../../assets/img/tour-5-2.jpg" alt="" class="cta__img cta__img--1" />
-        <img src="./../../../assets/img/tour-5-1.jpg" alt="" class="cta__img cta__img--2" />
-
+       
         <div class="cta__content">
           <h2 class="heading-secondary">What are you waiting for?</h2>
           <p class="cta__text">
             {{tour.duration}} days. 1 adventure. Infinite memories. Make it yours today!
           </p>
-          <button class="btn btn--green span-all-rows">Book tour now!</button>
+          <!-- <button class="btn btn--green span-all-rows">Book tour now!</button> -->
         </div>
       </div>
     </section>

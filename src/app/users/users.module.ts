@@ -5,11 +5,10 @@ import { UserRoutingModule } from './users.routing';
 import { FormsModule } from '@angular/forms';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
-
-
+import { MyReviewsComponent } from './my-reviews/my-reviews.component';
 
 @NgModule({
-  declarations: [ProfileComponent, ChangePasswordComponent, UpdateProfileComponent],
+  declarations: [ProfileComponent, ChangePasswordComponent, UpdateProfileComponent, MyReviewsComponent],
   imports: [
     CommonModule,
     UserRoutingModule,

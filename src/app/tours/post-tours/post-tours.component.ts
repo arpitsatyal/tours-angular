@@ -10,7 +10,7 @@ import { notifyService } from 'src/app/services/toastr.service';
 export class PostToursComponent implements OnInit {
   tour
   submitting = false
-  selectedFile:File = null
+  selectedFile
   constructor(
     public toursService: ToursService,
     public notfiy: notifyService
@@ -21,20 +21,45 @@ export class PostToursComponent implements OnInit {
   }
   
   onFileSelected(ev) {
-    this.selectedFile = <File>ev.target.files[0]
-    console.log(this.selectedFile)
+    // this.selectedFile = <File>ev.target.files[0]
+    // console.log(this.selectedFile)
+    let file: File = ev.target.files[0]
+    this.readAsBase64(file)
+    .then(result => this.selectedFile = result)
+    .catch(e => console.log(e))
+
+    }
+
+    readAsBase64(file) {
+      let reader = new FileReader()
+      return new Promise((res, rej) => {
+        reader.addEventListener('load', () => res(reader.result))
+        reader.addEventListener('error', e => rej(e))
+        reader.readAsDataURL(file)
+      })
     }
 
   createTour() {
+    let body
+    if(!this.selectedFile) {
+      body = {
+        tour: this.tour
+      }
+    } else {
+      body = {
+        tour: this.tour,
+        image: this.selectedFile
+      }
+    }
     this.submitting = true
-    this.toursService.postTour(this.tour, this.selectedFile)
+    this.toursService.postTour(body)
     .subscribe(() => {
-      this.submitting = false
       this.notfiy.showSuccess('tour created!')
-    }, err => {
-      this.submitting = false
-      console.log(err)
-      this.notfiy.showError(err)
-    } )
+      this.submitting= false
+    },
+     err => {
+       this.notfiy.showError(err)
+       this.submitting= false
+     })
   }
 }

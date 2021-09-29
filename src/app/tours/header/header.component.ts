@@ -2,17 +2,14 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { notifyService } from 'src/app/services/toastr.service';
 import { ToursService } from 'src/app/services/tours.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
-  public pathForUser = environment.imageUrl + '/users'
-  pathForTours = environment.imageUrl + '/tours'
-  matchedTour: any
-  allTours
+  matchedTour = []
+  allTours = []
   @Output() giveToChild = new EventEmitter()
   loggedInUser = JSON.parse(localStorage.getItem('user'))
   
@@ -22,10 +19,7 @@ constructor(public router: Router,
 ) {}
  
 ngOnInit(): void {
-  this.toursService.getTours()
-      .subscribe((data: any) => {
-        this.allTours = data.tours
-        }, err => this.notify.showError(err))
+  this.toursService.getTours().subscribe((data: any) => this.allTours = data.tours, err => this.notify.showError(err))
 }
 
 logout() {
@@ -35,18 +29,14 @@ logout() {
 
 getData(ev) {
   this.allTours.forEach(tour => {
-    var splitted = tour.name.split(' ')
-    let name
-    if (splitted.length === 1) {
-      name = tour.name
-    } else if (splitted.length > 1) {
-      name = splitted[0] + ' ' + splitted[1]
-    }
-    if (name === ev.target.value) {
-      this.matchedTour = tour
+    let xa = tour.name.split(' ')
+    let n = xa[0]
+    // console.log(n, ev.target.value)
+    if (n === ev.target.value) {
+      this.matchedTour.push(tour)
       this.giveToChild.emit(this.matchedTour)
     } else if (ev.key === 'Backspace') {
-      this.matchedTour = null
+      this.matchedTour = []
       this.giveToChild.emit(this.matchedTour)
     }
   })

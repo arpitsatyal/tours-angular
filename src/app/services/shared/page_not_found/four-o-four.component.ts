@@ -6,7 +6,7 @@ import { Component } from "@angular/core"
   template: `
   <h2>page not found</h2>
 
-<img src="./../../../../assets/img/1-10.png" alt="page_not_found">
+<img src="https://res.cloudinary.com/arpit7xx/image/upload/v1632915857/1-10_qgcxmb.png">
   `
 })
 

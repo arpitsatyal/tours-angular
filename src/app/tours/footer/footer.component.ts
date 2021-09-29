@@ -5,15 +5,8 @@ import { Component, OnInit } from '@angular/core';
   template: `
   <div class="footer">
   <div class="footer__logo">
-    <img src="./../../../assets/img/logo-green.png" alt="Natours logo" />
+    <img src="https://res.cloudinary.com/arpit7xx/image/upload/v1632915858/logo-green_usahlj.png" alt="Natours logo" />
   </div>
-  <ul class="footer__nav">
-    <li><a routerLink="#">About us</a></li>
-    <li><a routerLink="#">Download apps</a></li>
-    <li><a routerLink="#">Become a guide</a></li>
-    <li><a routerLink="#">Careers</a></li>
-    <li><a routerLink="#">Contact</a></li>
-  </ul>
   <p class="footer__copyright">
     &copy; by Arpit Satyal. All rights reserved.
   </p>

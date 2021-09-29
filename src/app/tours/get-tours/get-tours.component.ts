@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class GetToursComponent implements OnInit {
   allTours
-  msg: any
+  matchedTour = []
   page = 1
   total = 0
   limit = 6
@@ -29,7 +29,6 @@ export class GetToursComponent implements OnInit {
     public notify: notifyService
 
     ) { 
-    this.imagePath = environment.imageUrl + '/tours'
     }
 
   ngOnInit(): void {
@@ -59,6 +58,10 @@ export class GetToursComponent implements OnInit {
       this.allTours = res.tours
     }, err => this.notify.showError(err))
   }
- 
+  getMatchedTour(ev) {
+    console.log('matched')
+    this.matchedTour = ev
+    console.log(this.matchedTour)
+  }
 }
  

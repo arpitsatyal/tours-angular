@@ -8,8 +8,18 @@
     <label for="price">price</label>
     <input class="form-control" type="number" placeholder="{{oldTour.price}}" name="price" [(ngModel)]="tour.price">
 
-    <label for="location">location</label>
-    <input class="form-control" type="text" placeholder="location" name="location" [(ngModel)]="tour.location" required>
+    <label for="startLocation">startLocation</label>
+    <input class="form-control" type="text" placeholder="Start Location" name="startLocation" [(ngModel)]="tour.startLocation.description">
+
+    <label for="locations">Add Location</label>
+    <input class="form-control" type="text" placeholder="Location description" name="description" [(ngModel)]="tour.locations.description"> 
+    <label for="locations">coordinates</label>
+    <input class="form-control" type="number" placeholder="longitude" name="longitude" [(ngModel)]="tour.locations.longitude"> 
+    <input class="form-control" type="number" placeholder="latitude" name="latitude" [(ngModel)]="tour.locations.latitude"> 
+    <br>
+    <label for="startDate">startDate</label>
+    <input class="form-control" type="Date" placeholder="startDate" name="startDate" [(ngModel)]="tour.startDate"> 
+    <br>
 
     <label for="summary">summary</label>
     <input class="form-control" type="text" placeholder="{{oldTour.summary}}" name="summary" [(ngModel)]="tour.summary">

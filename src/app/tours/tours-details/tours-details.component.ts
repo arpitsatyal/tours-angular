@@ -12,10 +12,8 @@ import { environment } from 'src/environments/environment';
 export class ToursDetailsComponent implements OnInit {
   tour
   AllImages = []
-  selectedFiles = null
+  selectedFiles 
   submitting = false
-  imageUrl
-  userUrl
   
   public user = JSON.parse(localStorage.getItem('user'))
   constructor(
@@ -23,8 +21,7 @@ export class ToursDetailsComponent implements OnInit {
     public activatedRoute: ActivatedRoute,
     public notify: notifyService
   ) {
-    this.imageUrl = environment.imageUrl + '/tours'
-    this.userUrl = environment.imageUrl + '/users'
+
   }
 
   ngOnInit(): void {
@@ -41,12 +38,17 @@ export class ToursDetailsComponent implements OnInit {
     }
     console.log(this.AllImages)
   }
+
   uploadMultiple() {
+    const formData = new FormData()
+    this.AllImages.forEach(image => formData.append('images', image))
+    // let body = {
+    //   images: this.AllImages
+    // }
     this.submitting = true
-    this.toursService.updateTour(this.activatedRoute.snapshot.params.id, this.tour, this.AllImages)
+    this.toursService.updateTour(this.activatedRoute.snapshot.params.id, formData)
       .subscribe((res: any) => {
         this.submitting = false
-        this.tour.images = res.tour.images
         this.notify.showSuccess('all files uploaded!')
       }, err => {
         this.notify.showError(err)

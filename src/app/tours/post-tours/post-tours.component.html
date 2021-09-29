@@ -10,14 +10,12 @@
     <label for="price">price</label>
     <input class="form-control" type="number" placeholder="price" name="price" [(ngModel)]="tour.price">
 
-    <label for="location">location</label>
-    <input class="form-control" type="text" placeholder="location" name="location" [(ngModel)]="tour.location" required>
+    <label for="startLocation">Start Location</label>
+    <input class="form-control" type="text" placeholder="Start Location" name="startLocation" [(ngModel)]="tour.startLocation.description">
+    <br>
 
     <label for="summary">summary</label>
     <input class="form-control" type="text" placeholder="summary" name="summary" [(ngModel)]="tour.summary" required>
-
-    <label for="startDate">startDate</label>
-    <input class="form-control" type="date" placeholder="startDate" name="startDate" [(ngModel)]="tour.startDate" required>
 
     <label for="difficulty">difficulty</label> <br>
     <input type="radio" name="difficulty" value="easy" [(ngModel)]="tour.difficulty">

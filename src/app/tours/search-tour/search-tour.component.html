@@ -2,15 +2,13 @@
     <h2>advanced search for tours </h2>
 
     <form class="form-group">
-        <label for="name">name</label>
-        <input class="form-control" type="text" placeholder="name" name="name" [(ngModel)]="toSearch.name">
 
         <label for="durationTime">duration</label> <br>
-        <input type="radio" name="durationTime" value="0-10" [(ngModel)]="toSearch.durationTime">
+        <input type="radio" name="durationTime" value="0-10" [(ngModel)]="toSearch.duration">
         <label for="0-10">0-10</label><br>
-        <input type="radio" name="durationTime" value="10-20" [(ngModel)]="toSearch.durationTime">
+        <input type="radio" name="durationTime" value="10-20" [(ngModel)]="toSearch.duration">
         <label for="10-20">10-20</label><br>
-        <input type="radio" name="durationTime" value="20 +" [(ngModel)]="toSearch.durationTime">
+        <input type="radio" name="durationTime" value="20 +" [(ngModel)]="toSearch.duration">
         <label for="20 +">20 +</label><br>
 
         <label for="minPrice">minPrice</label>
@@ -20,6 +18,23 @@
         <label for="maxPrice">maxPrice</label>
         <input class="form-control" type="number" placeholder="maxPrice" name="maxPrice"
             [(ngModel)]="toSearch.maxPrice">
+
+            
+    <label for="startLocation">Start Location</label> <br>
+    <select name="startLocation" [(ngModel)]="toSearch.startLocation.description" (change)="onstartLocationSelected(toSearch.startLocation.description)">
+      <option value="">select start location</option>
+      <option *ngFor="let location of startLocations">{{location}}</option>
+    </select>
+    <br>
+
+  <div *ngIf="showName">
+    <label for="name">name</label> <br>
+    <select name="name" [(ngModel)]="toSearch.name">
+      <option value="">select name</option>
+      <option *ngFor="let toSearch of names" [value]="toSearch.name">{{toSearch.name}}</option>
+    </select>
+    <br>
+  </div>
 
         <label for="difficulty">difficulty</label> <br>
         <input type="radio" name="difficulty" value="easy" [(ngModel)]="toSearch.difficulty">
@@ -31,15 +46,12 @@
 
         
         <label for="maxGroup">Max Group Size</label> <br>
-        <input type="radio" name="maxGroup" value="0-10" [(ngModel)]="toSearch.maxGroup">
+        <input type="radio" name="maxGroup" value="0-10" [(ngModel)]="toSearch.maxGroupSize">
         <label for="0-10">0-10</label><br>
-        <input type="radio" name="maxGroup" value="10-20" [(ngModel)]="toSearch.maxGroup">
+        <input type="radio" name="maxGroup" value="10-20" [(ngModel)]="toSearch.maxGroupSize">
         <label for="10-20">10-20</label><br>
-        <input type="radio" name="maxGroup" value="20 +" [(ngModel)]="toSearch.maxGroup">
+        <input type="radio" name="maxGroup" value="20 +" [(ngModel)]="toSearch.maxGroupSize">
         <label for="20 +">20 +</label><br>
-
-        <label for="location">location</label>
-        <input class="form-control" type="text" placeholder="location" name="location" [(ngModel)]="toSearch.location" required>
 
         <button *ngIf="!submitting" class="btn btn-primary" (click)="search()">search</button>
         <button disabled *ngIf="submitting" class="btn btn-info">searching...</button>

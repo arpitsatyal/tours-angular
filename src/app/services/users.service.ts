@@ -15,19 +15,22 @@ export class UsersService extends BaseService {
         super('users')
     }
 
-    updateUser(id:string, data: User, image) {
-        let toSend
-        if(image) {
-        toSend = this.uploadService.uploadWithImage(id, data, image, 'profilePic')
-        } else {
-            toSend = data
-        }
-        return this.http.patch(`${this.url}/${id}`, toSend, this.getToken())
+    updateUser(id:string, data: User) {
+        // let toSend
+        // if(image) {
+        // toSend = this.uploadService.uploadWithImage(id, data, image, 'profilePic')
+        // } else {
+        //     toSend = data
+        // }
+        return this.http.patch(`${this.url}/${id}`, data, this.getToken())
     }
     updatePassword(data: User) {
         return this.http.patch(`${this.url}/changePassword`, data, this.getOptionsWithToken())
     }
     deleteAccount(id) {
         return this.http.delete(`${this.url}/${id}`, this.getOptionsWithToken())
+    }
+    myReviews() {
+        return this.http.get(`${this.url}/myReviews`, this.getOptionsWithToken())
     }
 }
