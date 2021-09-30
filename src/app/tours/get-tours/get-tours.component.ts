@@ -15,7 +15,7 @@ export class GetToursComponent implements OnInit {
   matchedTour = []
   page = 1
   total = 0
-  limit = 6
+  limit = 3
   imagePath
   oldPage
   pageSizeOptions = [1,2,3,4]

@@ -3,3 +3,6 @@
     background-color: #f1f1c1;
     font-size: medium;
   }
+ agm-map {
+   height: 400px;
+ }

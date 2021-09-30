@@ -11,7 +11,8 @@ let AuthRoutes: Routes = [
     { path: '**', component: PageNotFoundComponent }
 ]
 @NgModule({
-    imports: [RouterModule.forRoot(AuthRoutes)],
+    imports: [RouterModule.forRoot(AuthRoutes),
+    ],
     exports: [RouterModule]
 })
 export class AppRoutingModule { }

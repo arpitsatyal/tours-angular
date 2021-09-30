@@ -24,6 +24,7 @@ ngOnInit(): void {
 
 logout() {
   localStorage.clear()
+  this.notify.showInfo('you are logged out.')
   this.router.navigate([''])
 }
 

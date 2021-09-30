@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {HttpClientModule } from '@angular/common/http'
 import {ToastrModule} from 'ngx-toastr'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -8,6 +8,8 @@ import { ServicesModule } from './services/services.module';
 import { AuthModule } from './auth/auth.module';
 import { TourModule } from './tours/tour.module';
 import { UsersModule } from './users/users.module';
+import { AgmCoreModule } from '@agm/core'
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -21,10 +23,15 @@ import { UsersModule } from './users/users.module';
     AuthModule,
     TourModule,
     UsersModule, 
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: environment.google_api_key,
+      libraries: ['places','drawing']
+    }),
   ],
-  exports: [],
-  providers: [],
+  exports: [AgmCoreModule],
+  providers:[],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

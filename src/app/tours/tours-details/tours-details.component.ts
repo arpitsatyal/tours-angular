@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ToursService } from 'src/app/services/tours.service';
 import { ActivatedRoute } from '@angular/router';
 import { notifyService } from 'src/app/services/toastr.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-tours-details',
@@ -14,7 +13,8 @@ export class ToursDetailsComponent implements OnInit {
   AllImages = []
   selectedFiles 
   submitting = false
-  
+  lat: number 
+  lng: number 
   public user = JSON.parse(localStorage.getItem('user'))
   constructor(
     public toursService: ToursService,
@@ -23,11 +23,15 @@ export class ToursDetailsComponent implements OnInit {
   ) {
 
   }
-
   ngOnInit(): void {
     this.toursService.getTour(this.activatedRoute.snapshot.params.id)
       .subscribe((result: any) => {
-        this.tour = result.tour        
+        this.tour = result.tour  
+        result.tour.locations.forEach(loc => {
+          this.lat = loc.coordinates[0]
+          this.lng = loc.coordinates[1]
+          console.log(this.lat, this.lng)
+        })      
       }, err => this.notify.showError(err))
   }
 

@@ -14,8 +14,8 @@
     <label for="locations">Add Location</label>
     <input class="form-control" type="text" placeholder="Location description" name="description" [(ngModel)]="tour.locations.description"> 
     <label for="locations">coordinates</label>
-    <input class="form-control" type="number" placeholder="longitude" name="longitude" [(ngModel)]="tour.locations.longitude"> 
     <input class="form-control" type="number" placeholder="latitude" name="latitude" [(ngModel)]="tour.locations.latitude"> 
+    <input class="form-control" type="number" placeholder="longitude" name="longitude" [(ngModel)]="tour.locations.longitude"> 
     <br>
     <label for="startDate">startDate</label>
     <input class="form-control" type="Date" placeholder="startDate" name="startDate" [(ngModel)]="tour.startDate"> 
@@ -24,21 +24,9 @@
     <label for="summary">summary</label>
     <input class="form-control" type="text" placeholder="{{oldTour.summary}}" name="summary" [(ngModel)]="tour.summary">
     
-    <label for="startDate">startDate</label>
-    <input class="form-control" type="date" placeholder="startDate" name="startDate" [(ngModel)]="tour.startDate" required>
-
-    <label for="difficulty">difficulty</label> <br>
-    <input type="radio" name="difficulty" value="easy" [(ngModel)]="tour.difficulty">
-    <label for="easy">easy</label><br>
-    <input type="radio"  name="difficulty" value="medium" [(ngModel)]="tour.difficulty">
-    <label for="medium">medium</label><br>
-    <input type="radio"  name="difficulty" value="difficult"  [(ngModel)]="tour.difficulty">
-    <label for="difficult">difficult</label><br>
-
     <label for="maxGroupSize">maxGroupSize</label>
     <input class="form-control" type="number" placeholder="{{oldTour.maxGroupSize}}" name="maxGroupSize"
         [(ngModel)]="tour.maxGroupSize">
-
 
     <label for="image">Choose Image</label>
     <input class="form-control" type="file" (change)="onFileSelected($event)">
