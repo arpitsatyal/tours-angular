@@ -30,7 +30,6 @@ export class ToursDetailsComponent implements OnInit {
         result.tour.locations.forEach(loc => {
           this.lat = loc.coordinates[0]
           this.lng = loc.coordinates[1]
-          console.log(this.lat, this.lng)
         })      
       }, err => this.notify.showError(err))
   }

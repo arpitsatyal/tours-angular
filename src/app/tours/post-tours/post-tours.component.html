@@ -10,10 +10,6 @@
     <label for="price">price</label>
     <input class="form-control" type="number" placeholder="price" name="price" [(ngModel)]="tour.price">
 
-    <label for="startLocation">startLocation</label>
-    <input class="form-control" type="text" placeholder="Start Location" name="startLocation" [(ngModel)]="tour.startLocation.description">
-    <br>
-
     <label for="summary">summary</label>
     <input class="form-control" type="text" placeholder="summary" name="summary" [(ngModel)]="tour.summary" required>
 
@@ -32,7 +28,7 @@
 
     <label for="image">Choose Image</label><br>
     <input type="file" (change)="onFileSelected($event)"> 
-    <br>
+    <br> <br>
     <button *ngIf="!submitting" [disabled]="tourForm.invalid" class="btn btn-primary"
         (click)="createTour()">submit</button>
     <button disabled *ngIf="submitting" class="btn btn-info">submitting...</button>

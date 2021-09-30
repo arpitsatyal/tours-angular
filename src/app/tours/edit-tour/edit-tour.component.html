@@ -30,7 +30,7 @@
 
     <label for="image">Choose Image</label>
     <input class="form-control" type="file" (change)="onFileSelected($event)">
-
+    <br> <br>
     <button  [hidden]="submitting" class="btn btn-primary" (click)="editTour(tour)">submit</button>
     <button [hidden]="!submitting" class="btn btn-info">submitting...</button>
 </form>
