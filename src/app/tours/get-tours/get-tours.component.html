@@ -1,4 +1,4 @@
-  <app-header (giveToChild)="getMatchedTour=$event"></app-header>
+  <app-header (giveToChild)="getMatchedTour($event)"></app-header>
   <button class="btn btn-success" *ngIf="inputData" (click)="searchAgain()">search again</button>
   <div *ngIf="!matchedTour.length">
     <main class="main">
@@ -61,8 +61,11 @@
               <span class="card__footer-text">rating ({{tour.ratingsQuantity}})</span>
             </p>
             <a routerLink="/tours/tourDetails/{{tour._id}}" class="btn btn--green btn--small">Details</a>
-            <a routerLink="/tours/editTour/{{tour._id}}" class="btn btn-primary btn-sm" *ngIf="user" >Edit Tour</a>
-            <button class="btn btn-danger" *ngIf="user" (click)="deleteTour(tour._id)">delete tour </button>
+            <div *ngIf="user">
+              <a routerLink="/tours/editTour/{{tour._id}}" class="btn btn-primary btn-sm" *ngIf="user.role === 'admin'" >Edit Tour</a>
+              <br> <br>
+              <button class="btn btn-danger" *ngIf="user.role === 'admin'" (click)="deleteTour(tour._id)">delete tour </button>
+            </div>
           </div>
         </div>
       </div>

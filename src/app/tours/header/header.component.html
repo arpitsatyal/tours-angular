@@ -19,7 +19,10 @@
         <img src="https://res.cloudinary.com/arpit7xx/image/upload/v{{loggedInUser.imgVersion}}/{{loggedInUser.imgId}}" alt="User photo" class="nav__user-img" />
         <span>{{loggedInUser.username}}</span>
       </a>
-      <a routerLink="/tours/createTour" class="nav__el nav__el--cta">create a tour</a>
+      <div *ngIf="loggedInUser">
+            <a routerLink="/tours/createTour" class="nav__el nav__el--cta" *ngIf="loggedInUser.role === 'admin'">create a tour</a>
+      </div>
+  
       <button class="nav__el nav__el--cta" (click)="logout()">logout</button> 
     </nav>
     <nav class="nav nav--user" *ngIf="!loggedInUser">
@@ -27,7 +30,7 @@
     <a routerLink="/auth/register" class="nav__el nav__el--cta">create an account</a>
     </nav>
   </header>
-  <h1 *ngIf="!loggedInUser">Please login to create / edit / delete tours.</h1>
+  <h1 *ngIf="!loggedInUser  || loggedInUser.role !== 'admin'">Please login as administator to create / edit / delete tours.</h1>
   
   <div *ngIf="matchedTour.length">
     <main class="main">
@@ -89,8 +92,10 @@
               <span class="card__footer-text">rating ({{tour.ratingsQuantity}})</span>
             </p>
             <a routerLink="/tours/tourDetails/{{tour._id}}" class="btn btn--green btn--small">Details</a>
-            <a routerLink="/tours/editTour/{{tour._id}}" class="btn btn-primary btn-sm" *ngIf="loggedInUser.role === 'admin'" >Edit Tour</a>
+            <div *ngIf="loggedInUser">
+               <a routerLink="/tours/editTour/{{tour._id}}" class="btn btn-primary btn-sm" *ngIf="loggedInUser.role === 'admin'" >Edit Tour</a>
             <button class="btn btn-danger btn-sm" *ngIf="loggedInUser.role === 'admin'" (click)="deleteTour(tour._id)">delete tour </button>
+            </div>
           </div>
         </div>
       </div>
