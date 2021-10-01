@@ -72,7 +72,15 @@
       </div>
     </section>
 
-    <agm-map [longitude]="lng" [latitude]="lat"></agm-map>
+    <agm-map [longitude]="lng" [latitude]="lat">
+      <agm-marker 
+      [latitude]="lat" 
+        [longitude]="lng">    
+            <agm-info-window #infoWindow>
+                {{ label }}
+          </agm-info-window>
+  </agm-marker>
+    </agm-map> <br> 
     <app-get-reviews></app-get-reviews>
    
     <section class="section-cta">

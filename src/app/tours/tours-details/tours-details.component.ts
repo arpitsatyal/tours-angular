@@ -15,6 +15,7 @@ export class ToursDetailsComponent implements OnInit {
   submitting = false
   lat: number 
   lng: number 
+  label
   public user = JSON.parse(localStorage.getItem('user'))
   constructor(
     public toursService: ToursService,
@@ -30,6 +31,7 @@ export class ToursDetailsComponent implements OnInit {
         result.tour.locations.forEach(loc => {
           this.lat = loc.coordinates[0]
           this.lng = loc.coordinates[1]
+          this.label = loc.description
         })      
       }, err => this.notify.showError(err))
   }
