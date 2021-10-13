@@ -14,6 +14,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { GetReviewsComponent } from './reviews/get-reviews/get-reviews.component';
 import { CreateReviewComponent } from './reviews/create-review/create-review.component';
 import { AgmCoreModule } from '@agm/core'
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
     declarations: [
@@ -33,7 +34,8 @@ import { AgmCoreModule } from '@agm/core'
         FormsModule,
         ToursRoutingModule,
         MatPaginatorModule,
-        AgmCoreModule
+        AgmCoreModule,
+        NgxSpinnerModule
     ]
 })
 

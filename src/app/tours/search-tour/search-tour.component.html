@@ -1,6 +1,5 @@
 <div *ngIf="!results.length">
     <h2>advanced search for tours </h2>
-
     <form class="form-group">
 
         <label for="durationTime">duration</label> <br>
@@ -19,12 +18,11 @@
         <input class="form-control" type="number" placeholder="maxPrice" name="maxPrice"
             [(ngModel)]="toSearch.maxPrice">
 
-            
     <label for="startLocation">Start Location</label> <br>
     <select name="startLocation" [(ngModel)]="toSearch.startLocation.description" (change)="onstartLocationSelected(toSearch.startLocation.description)">
       <option value="">select start location</option>
       <option *ngFor="let location of startLocations">{{location}}</option>
-    </select>
+    </select>  
     <br>
 
   <div *ngIf="showName">
@@ -59,6 +57,7 @@
 
     <a routerLink="/tours/getTours">go back</a>
 </div>
+
 <div *ngIf="results.length">
     <app-get-tours [inputData]="results" (searchagain)="resetSearch()"></app-get-tours>
 </div>

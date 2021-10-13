@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToursService } from 'src/app/services/tours.service';
 import { ActivatedRoute } from '@angular/router';
 import { notifyService } from 'src/app/services/toastr.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-tours-details',
@@ -16,17 +17,22 @@ export class ToursDetailsComponent implements OnInit {
   lat: number 
   lng: number 
   label
+  tourHasCome = false
   public user = JSON.parse(localStorage.getItem('user'))
   constructor(
     public toursService: ToursService,
     public activatedRoute: ActivatedRoute,
-    public notify: notifyService
+    public notify: notifyService,
+    private spinner: NgxSpinnerService
   ) {
 
   }
   ngOnInit(): void {
+    this.spinner.show()
     this.toursService.getTour(this.activatedRoute.snapshot.params.id)
       .subscribe((result: any) => {
+        this.tourHasCome = true
+        this.spinner.hide()
         this.tour = result.tour  
         result.tour.locations.forEach(loc => {
           this.lat = loc.coordinates[0]

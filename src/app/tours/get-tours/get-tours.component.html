@@ -1,6 +1,6 @@
   <app-header (giveToChild)="getMatchedTour($event)"></app-header>
   <button class="btn btn-success" *ngIf="inputData" (click)="searchAgain()">search again</button>
-  <div *ngIf="!matchedTour.length">
+  <div *ngIf="!matchedTour.length && toursHasCome">
     <main class="main">
       <div class="card-container">
         <div class="card" *ngFor="let tour of allTours">
@@ -72,4 +72,9 @@
     </main>
     <mat-paginator  *ngIf="!inputData" [length]="total" [pageSize]="limit" [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)"></mat-paginator>
     <app-footer></app-footer>
+  </div>
+
+  <div *ngIf="!toursHasCome"> 
+    <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3330b9" 
+    type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
   </div>

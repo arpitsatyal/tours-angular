@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ToursService } from 'src/app/services/tours.service';
 import { notifyService } from 'src/app/services/toastr.service';
 import { PageEvent } from '@angular/material/paginator';
-import { environment } from 'src/environments/environment';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-get-tours',
@@ -19,6 +19,7 @@ export class GetToursComponent implements OnInit {
   imagePath
   oldPage
   pageSizeOptions = [1,2,3,4]
+  toursHasCome = false
   user = JSON.parse(localStorage.getItem('user'))
  
   @Input() inputData: any
@@ -26,14 +27,18 @@ export class GetToursComponent implements OnInit {
   constructor(
     public router: Router,
     public toursService: ToursService,
-    public notify: notifyService
+    public notify: notifyService,
+    private spinner: NgxSpinnerService
 
     ) { 
     }
 
   ngOnInit(): void {
+    this.spinner.show()
     this.toursService.getTours(this.limit, this.page)
       .subscribe((data: any) => {
+        this.toursHasCome = true
+      this.spinner.hide()
         if(this.inputData) {
           this.allTours = this.inputData
         } else {

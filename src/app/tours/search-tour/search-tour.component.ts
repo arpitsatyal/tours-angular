@@ -21,6 +21,7 @@ export class SearchTourComponent implements OnInit {
     public notify: notifyService,
     public toursService: ToursService,
     public router: Router
+
   ) { }
 
   ngOnInit(): void {
